@@ -2,19 +2,11 @@ import { useState, useEffect } from "react";
 import { toast } from 'react-hot-toast'
 
 const NotesCreator = ({ callback, selection, setSelected }) => {
-<<<<<<< HEAD
-    const [title, setTitle] = useState("")
-    const [content, setContent] = useState("")
-    const [importance, setImportance] = useState("dark")
-    const [editing, setEditing] = useState(false)
-    const [editingId, setEditingId] = useState(0)
-=======
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [importance, setImportance] = useState("dark");
   const [editing, setEditing] = useState(false);
   const [editingId, setEditingId] = useState(0);
->>>>>>> 07354a7fd5e20d2c4b0d988bd881d537a685257c
 
   const setDataInForm = () => {
     if (selection.idnote === undefined || selection.idnote === null) {
@@ -37,96 +29,51 @@ const NotesCreator = ({ callback, selection, setSelected }) => {
     setSelected({});
   };
 
-<<<<<<< HEAD
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        if (!editing) {
-            const response = await fetch(`https://nodenotesapi.herokuapp.com/api/save`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    title,
-                    content,
-                    importance
-                })
-            })
-            const results = await response.json()
-            if (results.insert === "succesfull") {
-                callback()
-                setTitle('')
-                setContent('')
-                setImportance('Normal')
-                toast.success('Note saved')
-            }
-        } else {
-            const url = `https://nodenotesapi.herokuapp.com/api/update/${editingId}`
-            const response = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    title,
-                    content,
-                    importance
-                })
-            })
-            const results = await response.json()
-            if (results.infoupdate === "succesfull") {
-                setTitle('')
-                setContent('')
-                setImportance('Normal')
-                setEditing(false)
-                toast.success('Note edited successfully')
-                callback()
-            }
-=======
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!editing) {
-      const response = await fetch(
-        `https://nodenotesapi.herokuapp.com/api/save`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            title,
-            content,
-            importance,
-          }),
->>>>>>> 07354a7fd5e20d2c4b0d988bd881d537a685257c
-        }
-      );
-      const results = await response.json();
+      const response = await fetch(`https://nodenotesapi.herokuapp.com/api/save`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title,
+          content,
+          importance
+        })
+      })
+      const results = await response.json()
       if (results.insert === "succesfull") {
-        callback();
-        setTitle("");
-        setContent("");
-        setImportance("Normal");
+        callback()
+        setTitle('')
+        setContent('')
+        setImportance('Normal')
+        toast.success('Note saved')
       }
     } else {
-      const url = `https://nodenotesapi.herokuapp.com/api/update/${editingId}`;
+      const url = `https://nodenotesapi.herokuapp.com/api/update/${editingId}`
       const response = await fetch(url, {
-        method: "PUT",
+        method: 'PUT',
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           title,
           content,
-          importance,
-        }),
-      });
-      const results = await response.json();
+          importance
+        })
+      })
+      const results = await response.json()
       if (results.infoupdate === "succesfull") {
-        setTitle("");
-        setContent("");
-        setImportance("Normal");
-        setEditing(false);
-        callback();
+        setTitle('')
+        setContent('')
+        setImportance('Normal')
+        setEditing(false)
+        toast.success('Note edited successfully')
+        callback()
       }
     }
-  };
+  }
+
   useEffect(() => {
     setDataInForm();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -191,5 +138,6 @@ const NotesCreator = ({ callback, selection, setSelected }) => {
     </section>
   );
 };
+
 
 export default NotesCreator;

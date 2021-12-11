@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { toast } from 'react-hot-toast'
 
 const NotesCreator = ({ callback, selection, setSelected }) => {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
-    const [importance, setImportance] = useState("")
+    const [importance, setImportance] = useState("dark")
     const [editing, setEditing] = useState(false)
     const [editingId, setEditingId] = useState(0)
 
@@ -46,6 +47,7 @@ const NotesCreator = ({ callback, selection, setSelected }) => {
                 setTitle('')
                 setContent('')
                 setImportance('Normal')
+                toast.success('Note saved')
             }
         } else {
             const url = `https://nodenotesapi.herokuapp.com/api/update/${editingId}`
@@ -66,6 +68,7 @@ const NotesCreator = ({ callback, selection, setSelected }) => {
                 setContent('')
                 setImportance('Normal')
                 setEditing(false)
+                toast.success('Note edited successfully')
                 callback()
             }
         }

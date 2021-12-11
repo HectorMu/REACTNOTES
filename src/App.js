@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {Toaster} from 'react-hot-toast'
 import Navigation from './components/Navigation'
 import NotesCreator from './components/NotesCreator'
 import Notes from './components/Notes'
@@ -34,6 +35,14 @@ function App() {
           </div>
         </div>
       </div>
+      <Toaster 
+      position="bottom-center" 
+      toastOptions={{
+        style:{
+          background:'#363636',
+          color:'#fff'
+        }
+      }} />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast'
 const styles = {
   cardWidth: {
     width: "100%",
@@ -11,6 +12,7 @@ const Note = ({ Note, renderNotes, selectNote }) => {
       await fetch(url, {
         method: "DELETE",
       });
+      toast.success('Note deleted succesfully')
       renderNotes();
     }
   };

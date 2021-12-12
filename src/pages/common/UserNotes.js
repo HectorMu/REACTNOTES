@@ -20,6 +20,9 @@ const UserNotes = () => {
   };
   useEffect(() => {
     GetNotes();
+    return () => {
+      setNotes([])
+    }
   }, []);
 
   return (

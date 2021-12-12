@@ -7,7 +7,7 @@ import UserNotes from "./pages/common/UserNotes";
 import NotFound from "./pages/status/NotFound";
 import LandingPage from "./pages/LandingPage";
 
-document.title = "REACT API NOTES";
+document.title = "Node Notes";
 
 function App() {
   return (

@@ -1,9 +1,25 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
+  const [isIndex, setIsIndex] = useState(false)
+  let location = useLocation()
+
+  const handleNavLinks = () => {
+    if (location.pathname === "/") {
+      setIsIndex(true)
+    } else {
+      setIsIndex(false)
+    }
+  }
+  useEffect(() => {
+    handleNavLinks()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location])
+  console.log(isIndex)
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
         <div className="container">
           <Link to="/" className="navbar-brand">
             Node Notes
@@ -19,21 +35,36 @@ const Navigation = () => {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div
-            className="collapse navbar-collapse ms-auto"
-            id="navbarNavAltMarkup"
-          >
-            <div className="navbar-nav">
-              <Link to="/notes" className="nav-link">
-                My notes
-              </Link>
-            </div>
-            <div className="navbar-nav">
-              <Link to="/about" className="nav-link">
-                About
-              </Link>
-            </div>
-          </div>
+          {
+            isIndex ?
+              <div className="collapse navbar-collapse ms-auto" id="NotLogged">
+                <div className="navbar-nav">
+                  <a className="nav-link" href="#howtostart">How to start</a>
+                </div>
+                <div className="navbar-nav">
+                  <a className="nav-link" href="#about">About</a>
+                </div>
+                <div className="navbar-nav">
+                  <a className="nav-link" href="#contact">Contact</a>
+                </div>
+              </div>
+              :
+              <div
+                className="collapse navbar-collapse ms-auto"
+                id="navbarNavAltMarkup"
+              >
+                <div className="navbar-nav">
+                  <Link to="/notes" className="nav-link">
+                    My notes
+                  </Link>
+                </div>
+                <div className="navbar-nav">
+                  <Link to="/about" className="nav-link">
+                    About
+                  </Link>
+                </div>
+              </div>
+          }
           <div
             className="collapse navbar-collapse justify-content-end"
             id="navbarNavAltMarkup"
@@ -49,5 +80,6 @@ const Navigation = () => {
     </div>
   );
 };
+
 
 export default Navigation;

@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import NotesCreator from "../../components/NotesCreator";
 import Notes from "../../components/Notes";
 import SearchNote from "../../components/SearchNote";
+import { Link } from "react-router-dom";
+import AddNote from "./AddNote";
+import { getNotes } from "../../services/notes";
 
 const UserNotes = () => {
   const [notes, setNotes] = useState([]);
@@ -9,10 +12,7 @@ const UserNotes = () => {
 
   const GetNotes = async () => {
     try {
-      const response = await fetch(
-        "https://nodenotesapi.herokuapp.com/api/listall"
-      );
-      const data = await response.json();
+      const data = await getNotes();
       setNotes(data);
     } catch (error) {
       console.log(error);
@@ -21,12 +21,12 @@ const UserNotes = () => {
   useEffect(() => {
     GetNotes();
     return () => {
-      setNotes([])
-    }
+      setNotes([]);
+    };
   }, []);
 
   return (
-    <div className="container  mt-4">
+    <div className="container  mt-4 py-5">
       <SearchNote Notes={notes} callback={GetNotes} setNotes={setNotes} />
       <div className="row">
         <div className="col-12 col-sm-12 col-md-4">
@@ -35,6 +35,9 @@ const UserNotes = () => {
             setSelected={setselectedNote}
             callback={GetNotes}
           />
+          <Link to="/notes/add" className="btn btn-primary">
+            New note
+          </Link>
         </div>
         <div className="col-12 col-sm-12 col-md-8">
           <Notes

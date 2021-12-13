@@ -6,7 +6,8 @@ import About from "./pages/common/About";
 import UserNotes from "./pages/common/UserNotes";
 import NotFound from "./pages/status/NotFound";
 import LandingPage from "./pages/LandingPage";
-import { Toaster } from "react-hot-toast"
+import { Toaster } from "react-hot-toast";
+import AddNote from "./pages/common/AddNote";
 
 document.title = "Node Notes";
 
@@ -16,7 +17,8 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/notes" element={<UserNotes />} />
+        <Route path="/notes/" element={<UserNotes />} />
+        <Route path="/notes/add" element={<AddNote />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

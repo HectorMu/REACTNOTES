@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { toast } from 'react-hot-toast'
+import { toast } from "react-hot-toast";
+import { saveNote, updateNote } from "../services/notes";
 
 const NotesCreator = ({ callback, selection, setSelected }) => {
   const [title, setTitle] = useState("");
@@ -30,49 +31,31 @@ const NotesCreator = ({ callback, selection, setSelected }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!editing) {
-      const response = await fetch(`https://nodenotesapi.herokuapp.com/api/save`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title,
-          content,
-          importance
-        })
-      })
-      const results = await response.json()
-      if (results.insert === "succesfull") {
-        callback()
-        setTitle('')
-        setContent('')
-        setImportance('Normal')
-        toast.success('Note saved')
+      const results = await saveNote(title, content, importance);
+      if (results === undefined || !results.status) {
+        return toast.error("Something went wrong at saving. Try again.");
       }
+      setTitle("");
+      setContent("");
+      setImportance("dark");
+      toast.success("Note saved");
+      callback();
     } else {
-      const url = `https://nodenotesapi.herokuapp.com/api/update/${editingId}`
-      const response = await fetch(url, {
-        method: 'PUT',
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          title,
-          content,
-          importance
-        })
-      })
-      const results = await response.json()
-      if (results.infoupdate === "succesfull") {
-        setTitle('')
-        setContent('')
-        setImportance('Normal')
-        setEditing(false)
-        toast.success('Note edited successfully')
-        callback()
+      const results = await updateNote(editingId, title, content, importance);
+      if (results === undefined || !results.status) {
+        return toast.error("Something went wrong at editing. Try again.");
       }
+      setTitle("");
+      setContent("");
+      setImportance("dark");
+      setEditing(false);
+      setSelected({});
+      toast.success("Note edited successfully");
+      callback();
     }
-  }
+  };
 
   useEffect(() => {
     setDataInForm();
@@ -138,6 +121,5 @@ const NotesCreator = ({ callback, selection, setSelected }) => {
     </section>
   );
 };
-
 
 export default NotesCreator;

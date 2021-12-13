@@ -1,19 +1,22 @@
-import { toast } from 'react-hot-toast'
+import { toast } from "react-hot-toast";
+import { deleteNote } from "../services/notes";
+
 const styles = {
   cardWidth: {
     width: "100%",
   },
 };
 const Note = ({ Note, renderNotes, selectNote }) => {
-  const deleteNote = async (id) => {
+  const deleteClick = async (id) => {
     const deleteConfirm = window.confirm("Are you sure to delete this note?");
     if (deleteConfirm) {
-      const url = `https://nodenotesapi.herokuapp.com/api/delete/${id}`;
-      await fetch(url, {
-        method: "DELETE",
-      });
-      toast.success('Note deleted succesfully')
-      renderNotes();
+      const results = await deleteNote(id);
+      if (results.status) {
+        toast.success("Note deleted succesfully");
+        renderNotes();
+      } else {
+        toast.error("Something went wrong at deleting. Try again.");
+      }
     }
   };
 
@@ -39,7 +42,7 @@ const Note = ({ Note, renderNotes, selectNote }) => {
                   Update
                 </button>
                 <button
-                  onClick={() => deleteNote(Note.idnote)}
+                  onClick={() => deleteClick(Note.idnote)}
                   className="btn btn-danger"
                 >
                   Delete

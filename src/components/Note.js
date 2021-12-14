@@ -25,7 +25,7 @@ const Note = ({ Note, renderNotes }) => {
   return (
     <div className="col">
       <div
-        className="card my-1 shadow text-center border-0"
+        className="card my-1 shadow text-center border-0 w-auto"
         style={styles.cardWidth}
       >
         <div className="row g-0">

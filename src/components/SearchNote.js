@@ -12,7 +12,7 @@ const SearchNote = ({ Notes, setNotes, callback }) => {
   return (
     <div>
       <input
-        className="form-control my-2 shadow"
+        className="form-control shadow-lg mb-3"
         placeholder="Search note by title"
         onChange={(e) => searchNote(e)}
       />

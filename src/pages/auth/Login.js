@@ -3,7 +3,7 @@ import { useState } from "react/cjs/react.development";
 import { login } from "../../services/auth";
 import { toast } from "react-hot-toast";
 
-const Login = () => {
+const Login = ({ setUser }) => {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -17,7 +17,11 @@ const Login = () => {
     }
     const { accessToken, serializedUser } = response;
     toast.success(`Welcome back again ${serializedUser.firstname}`);
-    window.localStorage.setItem("token", accessToken);
+
+    window.localStorage.setItem("NNtoken", accessToken);
+    window.localStorage.setItem("userSession", JSON.stringify(serializedUser));
+    const userData = JSON.parse(window.localStorage.getItem("userSession"));
+    setUser(userData);
     navigate("/notes");
   };
   return (

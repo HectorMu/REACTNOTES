@@ -1,9 +1,35 @@
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react/cjs/react.development";
+import { signup } from "../../services/auth";
 
 const SignUp = () => {
+  let navigate = useNavigate();
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [confirm, setConfirm] = useState("");
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    if (pass !== confirm) return toast.error("The passwords don't match.");
+    if (pass.length < 8)
+      return toast.error("The password must be minimum 8 characters long.");
+
+    const results = await signup(firstname, lastname, email, pass);
+    if (results.statusText === "emailAlreadyInUse") {
+      toast.error("An account is using this email already, try another email.");
+      return;
+    }
+    if (results.status) {
+      toast.success("Account registered, now log in to continue.");
+      navigate("/login");
+    }
+  };
   return (
     <div className="row mt-5 vh-100 ">
-      <div className="col col-lg-5 col-xl-4 col-md-8 col-12 mx-auto my-auto">
+      <div className="col col-lg-5 col-xl-6 col-md-8 col-12 mx-auto my-auto">
         <div className="container">
           <div
             id="signup-form"
@@ -20,34 +46,44 @@ const SignUp = () => {
               <div className="card-text text-center my-2 d-lg-none d-xl-none">
                 Welcome! sign up as new user and start saving notes.
               </div>
-              <form action="/signup" method="post">
-                <div className="input-group input-group-lg mb-3 mt-2">
-                  <input
-                    id="first"
-                    type="text"
-                    name="firstname"
-                    placeholder="First Name"
-                    className="form-control"
-                    required
-                  />
+              <form onSubmit={handleSignup}>
+                <div className="row">
+                  <div className="col">
+                    <div className="input-group input-group-lg mb-3 mt-2">
+                      <input
+                        id="first"
+                        type="text"
+                        placeholder="First Name"
+                        className="form-control"
+                        onChange={(e) => setFirstname(e.target.value)}
+                        value={firstname}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="input-group input-group-lg mb-3 mt-2">
+                      <input
+                        id="last"
+                        type="text"
+                        placeholder="Last Name"
+                        className="form-control"
+                        onChange={(e) => setLastname(e.target.value)}
+                        value={lastname}
+                        required
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div className="input-group input-group-lg mb-3 mt-2">
-                  <input
-                    id="last"
-                    type="text"
-                    name="lastname"
-                    placeholder="Last Name"
-                    className="form-control"
-                    required
-                  />
-                </div>
+
                 <div className="input-group input-group-lg mb-3 mt-2">
                   <input
                     id="email"
                     type="email"
-                    name="email"
                     placeholder="Email"
                     className="form-control"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
                     required
                   />
                 </div>
@@ -58,9 +94,10 @@ const SignUp = () => {
                   <input
                     id="pass"
                     type="password"
-                    name="pass"
                     placeholder="Password"
                     className="form-control"
+                    onChange={(e) => setPass(e.target.value)}
+                    value={pass}
                     required
                   />
                 </div>
@@ -71,9 +108,10 @@ const SignUp = () => {
                   <input
                     id="confirm"
                     type="password"
-                    name="confirm"
                     placeholder="Confirm Password"
                     className="form-control"
+                    onChange={(e) => setConfirm(e.target.value)}
+                    value={confirm}
                     required
                   />
                 </div>

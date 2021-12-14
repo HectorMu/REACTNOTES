@@ -3,8 +3,13 @@ import { checkInternetConnection } from "../helpers/helpers";
 import { baseUrl } from "./api";
 
 export const getNotes = async () => {
+  const token = window.localStorage.getItem("NNtoken");
   try {
-    const response = await fetch(`${baseUrl}/listall`);
+    const response = await fetch(`${baseUrl}/listall`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const data = await response.json();
     return data;
   } catch (error) {
@@ -19,8 +24,13 @@ export const getNotes = async () => {
   }
 };
 export const getOne = async (id) => {
+  const token = window.localStorage.getItem("NNtoken");
   try {
-    const response = await fetch(`${baseUrl}/listone/${id}`);
+    const response = await fetch(`${baseUrl}/listone/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const data = await response.json();
     return data[0];
   } catch (error) {
@@ -36,7 +46,7 @@ export const getOne = async (id) => {
 };
 
 export const saveNote = async (title, content, importance) => {
-  const token = window.localStorage.getItem("token");
+  const token = window.localStorage.getItem("NNtoken");
   try {
     const response = await fetch(`${baseUrl}/save`, {
       method: "POST",
@@ -48,7 +58,6 @@ export const saveNote = async (title, content, importance) => {
         title,
         content,
         importance,
-        fkuser: 1,
       }),
     });
     const results = await response.json();
@@ -65,7 +74,7 @@ export const saveNote = async (title, content, importance) => {
 };
 
 export const updateNote = async (id, title, content, importance) => {
-  const token = window.localStorage.getItem("token");
+  const token = window.localStorage.getItem("NNtoken");
   try {
     const response = await fetch(`${baseUrl}/update/${id}`, {
       method: "PUT",
@@ -77,7 +86,6 @@ export const updateNote = async (id, title, content, importance) => {
         title,
         content,
         importance,
-        fkuser: 1,
       }),
     });
     const results = await response.json();
@@ -94,7 +102,7 @@ export const updateNote = async (id, title, content, importance) => {
 };
 
 export const deleteNote = async (id) => {
-  const token = window.localStorage.getItem("token");
+  const token = window.localStorage.getItem("NNtoken");
   try {
     const response = await fetch(`${baseUrl}/delete/${id}`, {
       headers: {

@@ -3,11 +3,15 @@ import Notes from "../../components/Notes";
 import SearchNote from "../../components/SearchNote";
 import { Link } from "react-router-dom";
 import { getNotes } from "../../services/notes";
+import NoNotes from "../../components/NoNotes";
+import AddNoteButtonFixed from "../../components/AddNoteButtonFixed";
 
 const UserNotes = () => {
   const [notes, setNotes] = useState([]);
+  const [hasNotes, setHasnotes] = useState(true);
   const GetNotesHandler = async () => {
     const data = await getNotes();
+    if (data.statusText === "userNotesEmpty") return setHasnotes(false);
     setNotes(data);
   };
   useEffect(() => {
@@ -16,23 +20,33 @@ const UserNotes = () => {
       setNotes([]);
     };
   }, []);
-
   return (
     <div className="container-fluid  mt-4 py-5">
       <div className="row">
-        <div className="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-          <Link to="/notes/add" className="btn btn-primary">
-            New note
+        <div className="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 ">
+          <Link
+            to="/notes/add"
+            className="btn position-fixed d-none d-lg-block  d-xl-block    justify-content-center  btn-primary  btn-lg"
+          >
+            <i className="fas fa-plus mr-2"></i> New note
           </Link>
+          <AddNoteButtonFixed />
         </div>
 
-        <div className="col-12 col-sm-12 col-md-10 col-lg-10">
-          <SearchNote
-            Notes={notes}
-            callback={GetNotesHandler}
-            setNotes={setNotes}
-          />
-          <Notes Notes={notes} callback={GetNotesHandler} />
+        <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+          {hasNotes === true ? (
+            <SearchNote
+              Notes={notes}
+              callback={GetNotesHandler}
+              setNotes={setNotes}
+            />
+          ) : null}
+
+          {hasNotes === true ? (
+            <Notes Notes={notes} callback={GetNotesHandler} />
+          ) : (
+            <NoNotes />
+          )}
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import Navigation from "./components/Navigation";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import About from "./pages/common/About";
 import UserNotes from "./pages/common/UserNotes";
 import NotFound from "./pages/status/NotFound";
@@ -11,21 +11,66 @@ import AddNote from "./pages/common/AddNote";
 import EditNote from "./pages/common/EditNote";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
+import { useState } from "react/cjs/react.development";
 
 document.title = "Node Notes";
 
 function App() {
+  const userData = JSON.parse(window.localStorage.getItem("userSession"));
+  const [user, setUser] = useState(userData);
+
   return (
     <div>
-      <Navigation />
+      <Navigation user={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/notes/" element={<UserNotes />} />
-        <Route path="/notes/add" element={<AddNote />} />
-        <Route path="/notes/edit/:id" element={<EditNote />} />
+        <Route
+          path="/notes/"
+          element={
+            user === null ? (
+              <Navigate to="/login" replace={true} />
+            ) : (
+              <UserNotes />
+            )
+          }
+        />
+        <Route
+          path="/notes/add"
+          element={
+            user === null ? (
+              <Navigate to="/login" replace={true} />
+            ) : (
+              <AddNote />
+            )
+          }
+        />
+        <Route
+          path="/notes/edit/:id"
+          element={
+            user === null ? (
+              <Navigate to="/login" replace={true} />
+            ) : (
+              <EditNote />
+            )
+          }
+        />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/login"
+          element={
+            user !== null ? (
+              <Navigate to="/notes" replace={true} />
+            ) : (
+              <Login setUser={setUser} />
+            )
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            user !== null ? <Navigate to="/notes" replace={true} /> : <SignUp />
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />

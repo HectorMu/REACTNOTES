@@ -224,3 +224,10 @@ html {
     padding-bottom: 130px;
   }
 }
+#notes .card {
+  transition: all ease-in-out 0.3s;
+}
+
+#notes .card:hover {
+  transform: scale(1.05);
+}

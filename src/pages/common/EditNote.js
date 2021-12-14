@@ -1,33 +1,51 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
-import { saveNote } from "../../services/notes";
-const AddNote = () => {
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { updateNote, getOne } from "../../services/notes";
+
+const EditNote = () => {
   let navigate = useNavigate();
+  let { id } = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [importance, setImportance] = useState("dark");
 
+  const getNoteHandler = async () => {
+    const note = await getOne(id);
+    setTitle(note.title);
+    setContent(note.content);
+    setImportance(note.importance);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const results = await saveNote(title, content, importance);
+    const results = await updateNote(id, title, content, importance);
     if (results.authorized === false)
-      return toast.error("You need to authenticate first to save a note.");
+      return toast.error("You need to authenticate first to edit a note.");
     if (results === undefined || !results.status) {
-      return toast.error("Something went wrong at saving. Try again.");
+      return toast.error("Something went wrong at editing. Try again.");
     }
     setTitle("");
     setContent("");
     setImportance("dark");
-    toast.success("Note saved");
+    toast.success("Note edited");
     navigate("/notes");
   };
+  useEffect(() => {
+    getNoteHandler();
+    return () => {
+      setTitle("");
+      setContent("");
+      setImportance("dark");
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="row mt-5 py-5">
       <div className="col-lg-4 mx-auto">
         <section className="card text-center border-0">
           <div className="card-body shadow-lg">
-            <h5 className="card-title">Create a note</h5>
+            <h5 className="card-title">Editing note </h5>
             <form onSubmit={handleSubmit}>
               <div className="mb-2">
                 <input
@@ -84,4 +102,4 @@ const AddNote = () => {
   );
 };
 
-export default AddNote;
+export default EditNote;

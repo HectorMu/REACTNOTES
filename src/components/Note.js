@@ -1,16 +1,19 @@
 import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 import { deleteNote } from "../services/notes";
 
 const styles = {
   cardWidth: {
-    width: "100%",
+    width: "93%",
   },
 };
-const Note = ({ Note, renderNotes, selectNote }) => {
+const Note = ({ Note, renderNotes }) => {
   const deleteClick = async (id) => {
     const deleteConfirm = window.confirm("Are you sure to delete this note?");
     if (deleteConfirm) {
       const results = await deleteNote(id);
+      if (results.authorized === false)
+        return toast.error("You need to authenticate delete a note.");
       if (results.status) {
         toast.success("Note deleted succesfully");
         renderNotes();
@@ -19,7 +22,6 @@ const Note = ({ Note, renderNotes, selectNote }) => {
       }
     }
   };
-
   return (
     <div className="col">
       <div
@@ -35,12 +37,12 @@ const Note = ({ Note, renderNotes, selectNote }) => {
               <h5 className="card-title">{Note.title}</h5>
               <p className="card-text">{Note.content}</p>
               <div className="d-flex gap-1 justify-content-center">
-                <button
-                  onClick={() => selectNote(Note)}
+                <Link
+                  to={`/notes/edit/${Note.idnote}`}
                   className="btn btn-primary"
                 >
                   Update
-                </button>
+                </Link>
                 <button
                   onClick={() => deleteClick(Note.idnote)}
                   className="btn btn-danger"

@@ -1,7 +1,6 @@
 const SearchNote = ({ Notes, setNotes, callback }) => {
   const searchNote = (e) => {
     const inputValue = e.target.value;
-    console.log(inputValue);
     if (inputValue === "") {
       callback();
     }
@@ -9,7 +8,6 @@ const SearchNote = ({ Notes, setNotes, callback }) => {
       n.title.toLowerCase().includes(inputValue.toLowerCase())
     );
     setNotes(result);
-    console.log(result);
   };
   return (
     <div>

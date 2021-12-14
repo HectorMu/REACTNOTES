@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isIndex, setIsIndex] = useState(false);
   let location = useLocation();
+  let navigate = useNavigate();
+
+  const handleLogOut = () => {
+    window.localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   const handleNavLinks = () => {
     if (location.pathname === "/") {
@@ -77,9 +83,39 @@ const Navigation = () => {
             id="navbarNavAltMarkup"
           >
             <div className="navbar-nav">
-              <Link to="/profile" className="btn btn-primary btn-sm">
-                user
-              </Link>
+              <div className="dropdown">
+                <button
+                  className="btn btn-primary dropdown-toggle btn-sm"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i className="far fa-user" />
+                  User
+                  <small />
+                </button>
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <a className="dropdown-item" href="/profile">
+                    Profile
+                  </a>
+                  <Link to="/login" className="dropdown-item">
+                    Login
+                  </Link>
+                  <button
+                    onClick={handleLogOut}
+                    className="dropdown-item"
+                    href="/logout"
+                  >
+                    Log Out
+                    <i className="fas fa-sign-out-alt ml-2" />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

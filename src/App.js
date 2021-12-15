@@ -9,6 +9,7 @@ import LandingPage from "./pages/LandingPage";
 import { Toaster } from "react-hot-toast";
 import AddNote from "./pages/common/AddNote";
 import EditNote from "./pages/common/EditNote";
+import Profile from "./pages/common/Profile";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
 import { useState } from "react/cjs/react.development";
@@ -51,6 +52,16 @@ function App() {
               <Navigate to="/login" replace={true} />
             ) : (
               <EditNote />
+            )
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            user === null ? (
+              <Navigate to="/login" replace={true} />
+            ) : (
+              <Profile />
             )
           }
         />

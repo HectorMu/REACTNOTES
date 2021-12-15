@@ -144,9 +144,9 @@ const Navigation = ({ user, setUser }) => {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
-                      <a className="dropdown-item" href="/profile">
+                      <Link className="dropdown-item" to="/profile">
                         Profile
-                      </a>
+                      </Link>
                       <button onClick={handleLogOut} className="dropdown-item">
                         <i className="fas fa-sign-out-alt ml-2" /> Log Out
                       </button>

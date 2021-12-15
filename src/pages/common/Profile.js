@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EditProfileCard from "../../components/profile/EditProfileCard";
 import ProfileCard from "../../components/profile/ProfileCard";
 import ProfileSettings from "../../components/profile/ProfileSettings";
 
-const Profile = () => {
-  const [user, setUser] = useState({});
+const Profile = ({ user, setUser }) => {
   const [onEditing, setOnEditing] = useState(false);
   const [onConfig, setOnConfig] = useState(false);
 
-  const setUserDataHandler = () => {
-    const sessionData = JSON.parse(window.localStorage.getItem("userSession"));
-    setUser(sessionData);
-  };
   const toggleEditing = () => {
     setOnEditing(!onEditing);
   };
@@ -19,12 +14,6 @@ const Profile = () => {
     setOnConfig(!onConfig);
   };
 
-  useEffect(() => {
-    setUserDataHandler();
-    return () => {
-      setUser({});
-    };
-  }, []);
   return (
     <div className="container mt-5 pt-5">
       <div className="row">
@@ -37,7 +26,11 @@ const Profile = () => {
                 user={user}
               />
             ) : onEditing === true ? (
-              <EditProfileCard toggleEditing={toggleEditing} user={user} />
+              <EditProfileCard
+                setUser={setUser}
+                toggleEditing={toggleEditing}
+                user={user}
+              />
             ) : (
               <ProfileSettings toggleConfig={toggleConfig} />
             )}

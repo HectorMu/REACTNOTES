@@ -61,7 +61,7 @@ function App() {
             user === null ? (
               <Navigate to="/login" replace={true} />
             ) : (
-              <Profile />
+              <Profile setUser={setUser} user={user} />
             )
           }
         />

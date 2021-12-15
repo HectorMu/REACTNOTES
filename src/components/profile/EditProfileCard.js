@@ -1,6 +1,23 @@
-const EditProfileCard = ({ user, toggleEditing }) => {
+import { ChangeProfileNames } from "../../services/profile";
+import { useState } from "react";
+import toast from "react-hot-toast";
+
+const EditProfileCard = ({ user, toggleEditing, setUser }) => {
+  const [firstname, setFirstname] = useState(user.firstname);
+  const [lastname, setLastname] = useState(user.lastname);
+
+  const handleNamesChange = async (e) => {
+    e.preventDefault();
+    const results = await ChangeProfileNames(firstname, lastname);
+    if (!results.status) return toast.error(results.statusText);
+    const { user } = results;
+    window.localStorage.setItem("userSession", JSON.stringify(user));
+    setUser(user);
+    toast.success("Profile information changed succesfully");
+    toggleEditing(false);
+  };
   return (
-    <div className="card-body">
+    <form onSubmit={handleNamesChange} className="card-body">
       <div className="text-center shadow py-3">
         <i className="fas fa-user fa-5x"></i>
       </div>
@@ -10,7 +27,8 @@ const EditProfileCard = ({ user, toggleEditing }) => {
             className="form-control"
             type="text"
             placeholder="Firstname"
-            value={user.firstname}
+            onChange={(e) => setFirstname(e.target.value)}
+            value={firstname}
             required
           />
         </div>
@@ -19,7 +37,8 @@ const EditProfileCard = ({ user, toggleEditing }) => {
             className="form-control"
             type="text"
             placeholder="Lastname"
-            value={user.lastname}
+            onChange={(e) => setLastname(e.target.value)}
+            value={lastname}
             required
           />
         </div>
@@ -33,17 +52,18 @@ const EditProfileCard = ({ user, toggleEditing }) => {
         required
       />
       <div className="d-flex justify-content-center gap-3 mt-4">
-        <button className="btn btn-primary rounded-circle">
+        <button type="submit" className="btn btn-primary rounded-circle">
           <i className="fas fa-save"></i>{" "}
         </button>
         <button
+          type="button"
           onClick={toggleEditing}
           className="btn btn-danger rounded-circle"
         >
-          <i class="fas fa-times"></i>{" "}
+          <i className="fas fa-times"></i>{" "}
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 

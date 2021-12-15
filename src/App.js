@@ -1,7 +1,7 @@
 import Navigation from "./components/Navigation";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import About from "./pages/common/About";
 import UserNotes from "./pages/common/UserNotes";
 import NotFound from "./pages/status/NotFound";
@@ -13,6 +13,8 @@ import Profile from "./pages/common/Profile";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
 import { useState } from "react/cjs/react.development";
+import PrivateRoute from "./components/Authentication/PrivateRoute";
+import UserLogged from "./components/Authentication/UserLogged";
 
 document.title = "Node Notes";
 
@@ -25,63 +27,22 @@ function App() {
       <Navigation user={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route
-          path="/notes/"
-          element={
-            user === null ? (
-              <Navigate to="/login" replace={true} />
-            ) : (
-              <UserNotes />
-            )
-          }
-        />
-        <Route
-          path="/notes/add"
-          element={
-            user === null ? (
-              <Navigate to="/login" replace={true} />
-            ) : (
-              <AddNote />
-            )
-          }
-        />
+        <Route path="/notes/" element={<PrivateRoute view={UserNotes} />} />
+        <Route path="/notes/add" element={<PrivateRoute view={AddNote} />} />
         <Route
           path="/notes/edit/:id"
-          element={
-            user === null ? (
-              <Navigate to="/login" replace={true} />
-            ) : (
-              <EditNote />
-            )
-          }
+          element={<PrivateRoute view={EditNote} />}
         />
         <Route
           path="/profile"
-          element={
-            user === null ? (
-              <Navigate to="/login" replace={true} />
-            ) : (
-              <Profile setUser={setUser} user={user} />
-            )
-          }
+          element={<PrivateRoute view={Profile} setUser={setUser} />}
         />
         <Route path="/about" element={<About />} />
         <Route
           path="/login"
-          element={
-            user !== null ? (
-              <Navigate to="/notes" replace={true} />
-            ) : (
-              <Login setUser={setUser} />
-            )
-          }
+          element={<UserLogged view={Login} setUser={setUser} />}
         />
-        <Route
-          path="/signup"
-          element={
-            user !== null ? <Navigate to="/notes" replace={true} /> : <SignUp />
-          }
-        />
+        <Route path="/signup" element={<UserLogged view={SignUp} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />

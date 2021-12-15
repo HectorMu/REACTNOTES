@@ -16,7 +16,7 @@ const AddNote = () => {
     if (results.authorized === false)
       return toast.error("You need to authenticate first to save a note.");
     if (results === undefined || !results.status) {
-      return toast.error("Something went wrong at saving. Try again.");
+      return toast.error(results.statusText);
     }
     toast.success("Note saved");
     navigate("/notes");
@@ -30,7 +30,6 @@ const AddNote = () => {
       setContent={setContent}
       importance={importance}
       setImportance={setImportance}
-      note={null}
     />
   );
 };

@@ -12,8 +12,7 @@ const Login = ({ setUser }) => {
     e.preventDefault();
     const response = await login(email, pass);
     if (response.status === false) {
-      toast.error("Check your credentials");
-      return;
+      return toast.error(response.statusText);
     }
     const { accessToken, serializedUser } = response;
     toast.success(`Welcome back again ${serializedUser.firstname}`);

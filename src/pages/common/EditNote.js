@@ -10,6 +10,7 @@ const EditNote = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [importance, setImportance] = useState("dark");
+  const [onEditing, setOnEditing] = useState(false);
 
   const getNoteHandler = async () => {
     const gettedNote = await getOne(id);
@@ -26,6 +27,7 @@ const EditNote = () => {
     if (results === undefined || !results.status) {
       return toast.error("Something went wrong at editing. Try again.");
     }
+    setOnEditing(!onEditing);
     toast.success("Note edited");
     navigate("/notes");
   };
@@ -47,6 +49,8 @@ const EditNote = () => {
       setContent={setContent}
       importance={importance}
       setImportance={setImportance}
+      setOnEditing={setOnEditing}
+      onEditing={!onEditing}
     />
   );
 };

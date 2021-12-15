@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast";
-import { checkInternetConnection } from "../helpers/helpers";
+import { checkInternetConnection, errorCatcher } from "../helpers/helpers";
 import { baseUrl } from "./api";
 
 export const getNotes = async () => {
@@ -63,12 +63,13 @@ export const saveNote = async (title, content, importance) => {
     const results = await response.json();
     return results;
   } catch (error) {
+    console.log(error);
     if (!checkInternetConnection()) {
-      toast.error("Check your internet connection.");
-      return;
+      return new errorCatcher(false, "No internet connection");
     }
-    toast.error(
-      "We are having connectivity issues with our server. Try again later."
+    return new errorCatcher(
+      false,
+      "We are having connectivity issues with our server."
     );
   }
 };
@@ -91,12 +92,13 @@ export const updateNote = async (id, title, content, importance) => {
     const results = await response.json();
     return results;
   } catch (error) {
+    console.log(error);
     if (!checkInternetConnection()) {
-      toast.error("Check your internet connection.");
-      return;
+      return new errorCatcher(false, "No internet connection");
     }
-    toast.error(
-      "We are having connectivity issues with our server. Try again later."
+    return new errorCatcher(
+      false,
+      "We are having connectivity issues with our server."
     );
   }
 };
@@ -113,12 +115,13 @@ export const deleteNote = async (id) => {
     const results = await response.json();
     return results;
   } catch (error) {
+    console.log(error);
     if (!checkInternetConnection()) {
-      toast.error("Check your internet connection.");
-      return [];
+      return new errorCatcher(false, "No internet connection");
     }
-    toast.error(
-      "We are having connectivity issues with our server. Try again later."
+    return new errorCatcher(
+      false,
+      "We are having connectivity issues with our server."
     );
   }
 };

@@ -18,14 +18,10 @@ const SignUp = () => {
       return toast.error("The password must be minimum 8 characters long.");
 
     const results = await signup(firstname, lastname, email, pass);
-    if (results.statusText === "emailAlreadyInUse") {
-      toast.error("An account is using this email already, try another email.");
-      return;
-    }
-    if (results.status) {
-      toast.success("Account registered, now log in to continue.");
-      navigate("/login");
-    }
+    if (!results.status) return toast.error(results.statusText);
+
+    toast.success("Account registered, now log in to continue.");
+    navigate("/login");
   };
   return (
     <div className="row mt-5 vh-100 ">

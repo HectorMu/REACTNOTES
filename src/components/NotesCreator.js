@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const NotesCreator = ({
@@ -9,21 +8,16 @@ const NotesCreator = ({
   setContent,
   importance,
   setImportance,
+  setOnEditing,
+  onEditing,
 }) => {
   let navigate = useNavigate();
-  const [onEditing, setOnEditing] = useState(false);
-
   const cancelEdit = (e) => {
     e.preventDefault();
     setOnEditing(false);
     navigate("/notes");
   };
-  useEffect(() => {
-    if (title !== "" || content !== "") {
-      setOnEditing(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, content]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return (
     <div className="container">
       <div className="row mt-5 py-5">

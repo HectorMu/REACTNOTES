@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import Notes from "../../components/Notes";
-import SearchNote from "../../components/SearchNote";
+import Notes from "../../components/Notes/Notes";
+import SearchNote from "../../components/Notes/SearchNote";
 import { Link } from "react-router-dom";
 import { getNotes } from "../../services/notes";
-import NoNotes from "../../components/NoNotes";
-import AddNoteButtonFixed from "../../components/AddNoteButtonFixed";
+import NoNotes from "../../components/Notes/NoNotes";
+import AddNoteButtonFixed from "../../components/Notes/AddNoteButtonFixed";
+import FixedSortButton from "../../components/Notes/FixedSortButton";
 
 const UserNotes = () => {
   const [notes, setNotes] = useState([]);
@@ -31,6 +32,7 @@ const UserNotes = () => {
             <i className="fas fa-plus mr-2"></i> New note
           </Link>
           <AddNoteButtonFixed />
+          <FixedSortButton />
         </div>
 
         <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">

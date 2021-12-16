@@ -1,8 +1,7 @@
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/Navigation";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import { Routes, Route } from "react-router-dom";
-import About from "./pages/common/About";
 import UserNotes from "./pages/common/UserNotes";
 import NotFound from "./pages/status/NotFound";
 import LandingPage from "./pages/LandingPage";
@@ -37,7 +36,6 @@ function App() {
           path="/profile"
           element={<PrivateRoute view={Profile} setUser={setUser} />}
         />
-        <Route path="/about" element={<About />} />
         <Route
           path="/login"
           element={<UserLogged view={Login} setUser={setUser} />}

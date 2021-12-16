@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import NotesCreator from "../../components/NotesCreator";
+import NotesCreator from "../../components/Notes/NotesCreator";
 import { saveNote } from "../../services/notes";
 
 const AddNote = () => {

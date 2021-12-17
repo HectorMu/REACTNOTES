@@ -1,19 +1,4 @@
-import { useState, useEffect } from "react";
-import toast from "react-hot-toast";
-
-const FixedButton = ({ notes, setNotes, GetNotesHandler }) => {
-  const [sort, setSort] = useState("All");
-
-  const handleNotesSort = async () => {
-    await GetNotesHandler();
-    const sorted = notes.filter((n) => n.importance === sort);
-    setNotes(sorted);
-  };
-
-  useEffect(() => {
-    handleNotesSort();
-  }, [sort]);
-  console.log(notes);
+const FixedButton = ({ setSort }) => {
   return (
     <div className="dropdown">
       <button

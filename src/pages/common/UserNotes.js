@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Notes from "../../components/Notes/Notes";
 import SearchNote from "../../components/Notes/SearchNote";
 import { Link } from "react-router-dom";
@@ -7,17 +7,35 @@ import NoNotes from "../../components/Notes/NoNotes";
 import AddNoteButtonFixed from "../../components/Notes/AddNoteButtonFixed";
 import FixedSortButton from "../../components/Notes/FixedSortButton";
 
+const GetNotesHandler = async () => {
+  const data = await getNotes();
+  if (data.statusText === "userNotesEmpty") return false;
+  return data;
+};
 const UserNotes = () => {
   const [notes, setNotes] = useState([]);
   const [hasNotes, setHasnotes] = useState(true);
-  const GetNotesHandler = async () => {
-    const data = await getNotes();
-    if (data.statusText === "userNotesEmpty") return setHasnotes(false);
+  const [sort, setSort] = useState("All");
+
+  const SetNotesHandler = useCallback(async () => {
+    const data = await GetNotesHandler();
+    if (data === false) return setHasnotes(!hasNotes);
     setNotes(data);
-  };
+  }, [hasNotes]);
+
+  const SortNotesHandler = useCallback(async () => {
+    const data = await GetNotesHandler();
+    const sorted = data.filter((n) => n.importance === sort);
+    if (sort !== "All") return setNotes(sorted);
+    SetNotesHandler();
+  }, [sort, SetNotesHandler]);
+
   useEffect(() => {
-    GetNotesHandler();
-  }, []);
+    SortNotesHandler();
+  }, [SortNotesHandler]);
+  useEffect(() => {
+    SetNotesHandler();
+  }, [SetNotesHandler]);
   return (
     <div className="container-fluid  mt-4 py-5">
       <div className="row">
@@ -29,24 +47,20 @@ const UserNotes = () => {
             <i className="fas fa-plus mr-2"></i> New note
           </Link>
           <AddNoteButtonFixed />
-          <FixedSortButton
-            notes={notes}
-            setNotes={setNotes}
-            GetNotesHandler={GetNotesHandler}
-          />
+          <FixedSortButton setSort={setSort} />
         </div>
 
         <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
           {hasNotes === true ? (
             <SearchNote
               Notes={notes}
-              callback={GetNotesHandler}
+              callback={SetNotesHandler}
               setNotes={setNotes}
             />
           ) : null}
 
           {hasNotes === true ? (
-            <Notes Notes={notes} callback={GetNotesHandler} />
+            <Notes Notes={notes} callback={SetNotesHandler} />
           ) : (
             <NoNotes />
           )}

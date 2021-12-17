@@ -1,11 +1,19 @@
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 
-const FixedButton = () => {
-  const [sort, setSort] = useState("Normal");
+const FixedButton = ({ notes, setNotes, GetNotesHandler }) => {
+  const [sort, setSort] = useState("All");
+
+  const handleNotesSort = async () => {
+    await GetNotesHandler();
+    const sorted = notes.filter((n) => n.importance === sort);
+    setNotes(sorted);
+  };
 
   useEffect(() => {
-    console.log(sort);
+    handleNotesSort();
   }, [sort]);
+  console.log(notes);
   return (
     <div className="dropdown">
       <button
@@ -19,23 +27,22 @@ const FixedButton = () => {
       </button>
       <ul className="dropdown-menu" aria-labelledby="sortNotesButton">
         <li>
-          <button onClick={() => setSort("Normal")} className="dropdown-item">
+          <button onClick={() => setSort("All")} className="dropdown-item">
+            All
+          </button>
+        </li>
+        <li>
+          <button onClick={() => setSort("dark")} className="dropdown-item">
             Normal
           </button>
         </li>
         <li>
-          <button
-            onClick={() => setSort("Important")}
-            className="dropdown-item"
-          >
+          <button onClick={() => setSort("warning")} className="dropdown-item">
             Important
           </button>
         </li>
         <li>
-          <button
-            onClick={() => setSort("Very important")}
-            className="dropdown-item"
-          >
+          <button onClick={() => setSort("danger")} className="dropdown-item">
             Very important
           </button>
         </li>

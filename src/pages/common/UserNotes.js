@@ -17,9 +17,6 @@ const UserNotes = () => {
   };
   useEffect(() => {
     GetNotesHandler();
-    return () => {
-      setNotes([]);
-    };
   }, []);
   return (
     <div className="container-fluid  mt-4 py-5">
@@ -32,7 +29,11 @@ const UserNotes = () => {
             <i className="fas fa-plus mr-2"></i> New note
           </Link>
           <AddNoteButtonFixed />
-          <FixedSortButton />
+          <FixedSortButton
+            notes={notes}
+            setNotes={setNotes}
+            GetNotesHandler={GetNotesHandler}
+          />
         </div>
 
         <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">

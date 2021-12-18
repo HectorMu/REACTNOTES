@@ -1,16 +1,17 @@
-const FixedButton = ({ setSort }) => {
+const SortButton = ({ setSort }) => {
   return (
     <div className="dropdown">
       <button
-        className={`fixed-bottom-left  rounded-circle btn btn-primary btn-lg d-xl-none d-lg-none`}
+        className={` btn btn-primary position-fixed  d-sm-none d-none d-md-none d-lg-block d-xl-block`}
         type="button"
         id="sortNotesButton"
         data-bs-toggle="dropdown"
         aria-expanded="false"
+        style={{ marginTop: "50px" }}
       >
-        <i className="fas fa-chevron-up"></i>
+        Sort <i className="fas fa-chevron-down"></i>
       </button>
-      <ul className="dropdown-menu " aria-labelledby="sortNotesButton">
+      <ul className="dropdown-menu" aria-labelledby="sortNotesButton">
         <li>
           <button onClick={() => setSort("All")} className="dropdown-item">
             All
@@ -36,4 +37,4 @@ const FixedButton = ({ setSort }) => {
   );
 };
 
-export default FixedButton;
+export default SortButton;

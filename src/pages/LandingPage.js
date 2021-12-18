@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ContactForm from "../components/LandingPage/ContactForm";
 
 const LandingPage = () => {
   return (
@@ -258,40 +259,7 @@ const LandingPage = () => {
           </div>
           <div className="col col-sm-12 col-12 col-md-6 col-lg-6  ml-0 pl-0">
             <div className="container">
-              <div id="formcard" className="card mt-5 mb-4">
-                <div className="card-body py-5">
-                  <h2 className="display-4 font-weight-bolder text-center">
-                    Your data
-                  </h2>
-                  <form id="contactForm" method="POST">
-                    <div className="form-group"></div>
-                    <input
-                      type="text"
-                      className="form-control mb-2"
-                      id="reply"
-                      name="_replyto"
-                      placeholder="Email"
-                    />
-                    <textarea
-                      className="form-control"
-                      name="message"
-                      id="message"
-                      cols={30}
-                      rows={8}
-                      placeholder="Message"
-                      defaultValue={""}
-                    />
-                    <div className="d-flex justify-content-center">
-                      <button
-                        type="submit"
-                        className="btn w-50  btn-primary mt-2"
-                      >
-                        Send
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+              <ContactForm />
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import { getNotes } from "../../services/notes";
 import NoNotes from "../../components/Notes/NoNotes";
 import AddNoteButtonFixed from "../../components/Notes/AddNoteButtonFixed";
 import FixedSortButton from "../../components/Notes/FixedSortButton";
+import SortButton from "../../components/Notes/SortButton";
 
 const GetNotesHandler = async () => {
   const data = await getNotes();
@@ -19,12 +20,13 @@ const UserNotes = () => {
 
   const SetNotesHandler = useCallback(async () => {
     const data = await GetNotesHandler();
-    if (data === false) return setHasnotes(!hasNotes);
+    if (data === false) return setHasnotes(false);
     setNotes(data);
-  }, [hasNotes]);
+  }, []);
 
   const SortNotesHandler = useCallback(async () => {
     const data = await GetNotesHandler();
+    if (data === false) return setHasnotes(false);
     const sorted = data.filter((n) => n.importance === sort);
     if (sort !== "All") return setNotes(sorted);
     SetNotesHandler();
@@ -47,6 +49,7 @@ const UserNotes = () => {
             <i className="fas fa-plus mr-2"></i> New note
           </Link>
           <AddNoteButtonFixed />
+          <SortButton setSort={setSort} />
           <FixedSortButton setSort={setSort} />
         </div>
 

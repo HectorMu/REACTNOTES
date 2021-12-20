@@ -8,7 +8,7 @@ const FixedButton = ({ setSort }) => {
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        <i className="fas fa-chevron-up"></i>
+        <i className="far fa-eye"></i>
       </button>
       <ul className="dropdown-menu " aria-labelledby="sortNotesButton">
         <li>

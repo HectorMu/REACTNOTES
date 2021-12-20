@@ -27,7 +27,7 @@ const Profile = ({ user, setUser }) => {
   return (
     <div className="container mt-5 pt-5">
       <div className="row">
-        <div className="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8 mx-auto">
+        <div className="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 mx-auto">
           <div className="card shadow-lg">
             {onEditing === false && onConfig === false ? (
               <ProfileCard

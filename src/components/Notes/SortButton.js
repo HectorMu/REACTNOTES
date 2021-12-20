@@ -9,7 +9,7 @@ const SortButton = ({ setSort }) => {
         aria-expanded="false"
         style={{ marginTop: "50px" }}
       >
-        Sort <i className="fas fa-chevron-down"></i>
+        Watch <i className="far fa-eye"></i>
       </button>
       <ul className="dropdown-menu" aria-labelledby="sortNotesButton">
         <li>

@@ -2,6 +2,7 @@ import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { deleteNote } from "../../services/notes";
 import Moment from "react-moment";
+
 const styles = {
   cardWidth: {
     width: "93%",
@@ -30,15 +31,21 @@ const Note = ({ Note, renderNotes }) => {
       >
         <div className="row g-0">
           <div
-            className={`col-1 col-md-1 col-lg-1  col-sm-1 bg-${Note.importance}`}
+            className={`col-1 col-md-1 col-lg-1 col-sm-1 bg-${Note.importance}`}
           ></div>
           <div className="col-11 col-md-11 col-lg-11 col-sm-11">
             <div className="card-body">
               <h5 className="card-title">{Note.title}</h5>
               <p className="card-text">{Note.content}</p>
               <p className="card-text border-bottom">
-                <Moment fromNow className="text-muted text-uppercase small">
-                  {Note.createdat}
+                <Moment
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="left"
+                  title={Note.createdat.split(" ")[0]}
+                  fromNow
+                  className="text-muted text-uppercase small btn border-0"
+                >
+                  {Note.createdat.replace("/", "-")}
                 </Moment>
               </p>
               <div className="d-flex gap-1 justify-content-center">

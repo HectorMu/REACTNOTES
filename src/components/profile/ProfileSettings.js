@@ -15,13 +15,13 @@ const ProfileSettings = ({ toggleConfig, setUser }) => {
 
   return (
     <div className="card-body">
-      <div className="text-center shadow py-3">
+      <div className="text-center shadow py-3 mb-4">
         <i className="fas fa-user fa-5x"></i>
         <h3 className="text-center mt-3">Profile settings</h3>
       </div>
       <div className="row ">
         <div className="col-12 col-lg-6">
-          <div className="text-center shadow pt-1 pb-2 container">
+          <div className="text-center shadow pt-1 pb-2 container mb-4">
             <h4 className=" mt-3">
               {onPasswordChange === true ? "Changing password " : "Security"}
             </h4>

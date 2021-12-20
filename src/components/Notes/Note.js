@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { deleteNote } from "../../services/notes";
-
+import Moment from "react-moment";
 const styles = {
   cardWidth: {
     width: "93%",
@@ -36,19 +36,23 @@ const Note = ({ Note, renderNotes }) => {
             <div className="card-body">
               <h5 className="card-title">{Note.title}</h5>
               <p className="card-text">{Note.content}</p>
-              <p className="card-text">{Note.createdat}</p>
+              <p className="card-text border-bottom">
+                <Moment fromNow className="text-muted text-uppercase small">
+                  {Note.createdat}
+                </Moment>
+              </p>
               <div className="d-flex gap-1 justify-content-center">
                 <Link
                   to={`/notes/edit/${Note.idnote}`}
-                  className="btn btn-primary"
+                  className="btn btn-primary btn-sm w-100"
                 >
-                  Update
+                  <i className="fas fa-pen"></i>
                 </Link>
                 <button
                   onClick={() => deleteClick(Note.idnote)}
-                  className="btn btn-danger"
+                  className="btn btn-danger btn-sm w-100"
                 >
-                  Delete
+                  <i className="fas fa-trash"></i>
                 </button>
               </div>
             </div>

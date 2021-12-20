@@ -14,6 +14,7 @@ import SignUp from "./pages/auth/SignUp";
 import { useState } from "react/cjs/react.development";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 import UserLogged from "./components/Authentication/UserLogged";
+//import Moment from "react-moment";
 
 document.title = "Node Notes";
 

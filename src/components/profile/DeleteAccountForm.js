@@ -35,7 +35,7 @@ const DeleteAccountForm = ({ toggleDeleteAccount, setUser }) => {
           required
         />
       </div>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-center gap-3">
         <button type="submit" className="btn btn-primary rounded-circle">
           <i className="fas fa-save"></i>
         </button>

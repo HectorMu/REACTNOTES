@@ -36,6 +36,7 @@ const Note = ({ Note, renderNotes }) => {
             <div className="card-body">
               <h5 className="card-title">{Note.title}</h5>
               <p className="card-text">{Note.content}</p>
+              <p className="card-text">{Note.createdat}</p>
               <div className="d-flex gap-1 justify-content-center">
                 <Link
                   to={`/notes/edit/${Note.idnote}`}

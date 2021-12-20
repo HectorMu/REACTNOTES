@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import EditProfileCard from "../../components/profile/EditProfileCard";
 import ProfileCard from "../../components/profile/ProfileCard";
 import ProfileSettings from "../../components/profile/ProfileSettings";
+import { getProfileData } from "../../services/profile";
 
 const Profile = ({ user, setUser }) => {
   const [onEditing, setOnEditing] = useState(false);
   const [onConfig, setOnConfig] = useState(false);
+
+  const getProfileDataHandler = useCallback(async () => {
+    const data = await getProfileData();
+    window.localStorage.setItem("userSession", JSON.stringify(data));
+    setUser(data);
+  }, [setUser]);
 
   const toggleEditing = () => {
     setOnEditing(!onEditing);
@@ -14,6 +21,9 @@ const Profile = ({ user, setUser }) => {
     setOnConfig(!onConfig);
   };
 
+  useEffect(() => {
+    getProfileDataHandler();
+  }, [getProfileDataHandler]);
   return (
     <div className="container mt-5 pt-5">
       <div className="row">
@@ -32,7 +42,7 @@ const Profile = ({ user, setUser }) => {
                 user={user}
               />
             ) : (
-              <ProfileSettings toggleConfig={toggleConfig} />
+              <ProfileSettings toggleConfig={toggleConfig} setUser={setUser} />
             )}
           </div>
         </div>

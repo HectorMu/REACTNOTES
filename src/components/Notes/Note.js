@@ -35,8 +35,8 @@ const Note = ({ Note, renderNotes }) => {
           ></div>
           <div className="col-11 col-md-11 col-lg-11 col-sm-11">
             <div className="card-body">
-              <h5 className="card-title">{Note.title}</h5>
-              <p className="card-text">{Note.content}</p>
+              <h5 className="card-title text-truncate">{Note.title}</h5>
+              <p className="card-text text-truncate">{Note.content}</p>
               <p className="card-text border-bottom">
                 <Moment
                   data-bs-toggle="tooltip"

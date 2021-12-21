@@ -14,12 +14,12 @@ const ProfileSettings = ({ toggleConfig, setUser }) => {
   };
 
   return (
-    <div className="card-body">
+    <div className="shadow py-2">
       <div className="text-center shadow py-3 mb-4">
         <i className="fas fa-user fa-5x"></i>
         <h3 className="text-center mt-3">Profile settings</h3>
       </div>
-      <div className="row ">
+      <div className="row container">
         <div className="col-12 col-lg-6">
           <div className="text-center shadow pt-1 pb-2 container mb-4">
             <h4 className=" mt-3">
@@ -60,7 +60,7 @@ const ProfileSettings = ({ toggleConfig, setUser }) => {
         </div>
       </div>
 
-      <div className="d-flex justify-content-end gap-3 mt-4">
+      <div className="d-flex justify-content-end container gap-3 mt-4">
         <button
           onClick={toggleConfig}
           className="btn btn-primary rounded-circle"

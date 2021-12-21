@@ -47,7 +47,7 @@ const LoggedLinks = ({ setUser, user }) => {
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <Link className="dropdown-item" to="/profile">
-                Profile
+                <i className="fas fa-id-card"></i> Profile
               </Link>
               <button onClick={handleLogOut} className="dropdown-item">
                 <i className="fas fa-sign-out-alt ml-2" /> Log Out

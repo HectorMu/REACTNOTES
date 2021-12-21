@@ -24,9 +24,9 @@ const NotesCreator = ({
         <div className="col-12 col-lg-8 col-md-12 col-xl-8 col-sm-12 mx-auto">
           <section className="card text-center border-0">
             <div className="card-body shadow-lg">
-              <h5 className="card-title">
-                {onEditing === true ? "Edit note " : "Create note"}
-              </h5>
+              <h4 className="card-title py-3 fw-bolder fs-2">
+                {onEditing === true ? "Editing note " : "Create note"}
+              </h4>
               <form onSubmit={submitFunction}>
                 <div className="mb-2">
                   <input
@@ -40,15 +40,17 @@ const NotesCreator = ({
                   />
                 </div>
                 <div className="mb-2">
-                  <input
+                  <textarea
                     className="form-control"
                     type="text"
                     placeholder="Content"
                     onChange={(e) => setContent(e.target.value)}
                     value={content}
+                    rows={10}
                     required
                   />
                 </div>
+                <label className="mb-1">Note importance: </label>
                 <div className="mb-2">
                   <select
                     className="form-select"
@@ -63,27 +65,29 @@ const NotesCreator = ({
                     <option value="danger">Very important</option>
                   </select>
                 </div>
-                <button
-                  className="btn btn-outline-primary btn-sm w-100 mt-3"
-                  type="submit"
-                >
-                  Save
-                </button>
-                {onEditing === true ? (
+                <div className="d-flex gap-3">
                   <button
-                    onClick={cancelEdit}
-                    className="btn btn-outline-danger btn-sm w-100 mt-1"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Tooltip on top"
+                    className="btn btn-primary  w-100 "
+                    type="submit"
                   >
-                    Cancel
+                    <i className="fas fa-check"></i>
                   </button>
-                ) : (
-                  <Link
-                    to="/notes"
-                    className="btn btn-outline-danger btn-sm w-100 mt-1"
-                  >
-                    Cancel
-                  </Link>
-                )}
+                  {onEditing === true ? (
+                    <button
+                      onClick={cancelEdit}
+                      className="btn btn-danger  w-100 "
+                    >
+                      <i className="fas fa-times"></i>
+                    </button>
+                  ) : (
+                    <Link to="/notes" className="btn btn-danger  w-100  ">
+                      <i className="fas fa-times"></i>
+                    </Link>
+                  )}
+                </div>
               </form>
             </div>
           </section>

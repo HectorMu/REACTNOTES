@@ -1,5 +1,5 @@
 body {
-  font-family: "Comfortaa", cursive;
+  font-family: "Comfortaa", cursive !important;
 }
 html {
   scroll-behavior: smooth;
@@ -8,11 +8,6 @@ html {
   font-family: "Comfortaa", cursive;
   font-weight: bolder;
   font-size: 25px;
-}
-.navbar-nav .nav-item a {
-  font-family: "Comfortaa", cursive;
-  font-weight: bolder;
-  font-size: 17px;
 }
 
 #testimonial {
@@ -36,20 +31,19 @@ html {
   transform: scale(1);
   transition: 0.5s;
 }
+
 .nav-link {
-  color: black;
+  font-family: "Comfortaa", cursive;
+  transition: ease-in all 0.5s;
+  font-size: 17px;
 }
+
 .nav-link:hover {
-  font-weight: bolder;
-  color: white;
+  color: white !important;
+  font-weight: bold;
 }
 .navbar-brand {
   color: black;
-}
-
-.navbar-brand:hover {
-  font-weight: bolder;
-  color: white;
 }
 
 #welcome {
@@ -117,9 +111,7 @@ html {
   right: 65%;
   bottom: 10%;
 }
-.modal.fade {
-  z-index: 999999999999 !important;
-}
+
 .active {
   font-weight: bolder;
   color: white;
@@ -235,4 +227,10 @@ html {
 
 #notes .card:hover {
   transform: scale(1.05);
+}
+
+input:focus {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
 }

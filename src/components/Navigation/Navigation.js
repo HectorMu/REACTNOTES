@@ -12,7 +12,7 @@ const Navigation = ({ user, setUser }) => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg fixed-top  navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg fixed-top  navbar-dark bg-custom-1">
         <div className="container">
           <Link to="/" className="navbar-brand">
             Node Notes

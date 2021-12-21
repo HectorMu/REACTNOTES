@@ -7,7 +7,7 @@ const SortButton = ({ setSort }) => {
         id="sortNotesButton"
         data-bs-toggle="dropdown"
         aria-expanded="false"
-        style={{ marginTop: "50px" }}
+        style={{ marginTop: "55px" }}
       >
         Watch <i className="far fa-eye"></i>
       </button>

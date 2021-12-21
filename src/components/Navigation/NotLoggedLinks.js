@@ -6,7 +6,11 @@ const NotLoggedLinks = () => {
   let location = useLocation();
   const [isIndex, setIsIndex] = useState(false);
   const handleNavLinks = () => {
-    if (location.pathname === "/login" || location.pathname === "/signup") {
+    if (
+      location.pathname === "/login" ||
+      location.pathname === "/signup" ||
+      location.pathname === "/recover"
+    ) {
       setIsIndex(false);
     } else {
       setIsIndex(true);

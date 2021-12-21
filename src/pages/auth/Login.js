@@ -15,7 +15,7 @@ const Login = ({ setUser }) => {
       return toast.error(response.statusText);
     }
     const { accessToken, serializedUser } = response;
-    toast.success(`Welcome back again ${serializedUser.firstname}`);
+    toast.success(`Welcome ${serializedUser.firstname}`);
 
     window.localStorage.setItem("NNtoken", accessToken);
     window.localStorage.setItem("userSession", JSON.stringify(serializedUser));
@@ -78,7 +78,7 @@ const Login = ({ setUser }) => {
                   />
                 </div>
                 <small>
-                  <a href="/recover">Recover my password</a>
+                  <Link to="/recover">Recover my password</Link>
                 </small>
                 <button
                   type="submit"

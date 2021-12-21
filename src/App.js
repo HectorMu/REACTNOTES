@@ -14,8 +14,7 @@ import SignUp from "./pages/auth/SignUp";
 import { useState } from "react/cjs/react.development";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 import UserLogged from "./components/Authentication/UserLogged";
-import "./lib/moment";
-document.title = "Node Notes";
+import "./lib/moment-config";
 
 function App() {
   const userData = JSON.parse(window.localStorage.getItem("userSession"));
@@ -25,7 +24,7 @@ function App() {
     <div>
       <Navigation user={user} setUser={setUser} />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<UserLogged view={LandingPage} />} />
         <Route path="/notes/" element={<PrivateRoute view={UserNotes} />} />
         <Route path="/notes/add" element={<PrivateRoute view={AddNote} />} />
         <Route

@@ -10,12 +10,16 @@ const SearchNote = ({ Notes, setNotes, callback }) => {
     setNotes(result);
   };
   return (
-    <div>
+    <div className="input-group mb-3 ">
       <input
-        className="form-control shadow-lg mb-3"
+        type="text"
+        className="form-control rounded-0"
         placeholder="Search note by title"
         onChange={(e) => searchNote(e)}
       />
+      <span className="input-group-text btn btn-primary rounded-0">
+        <i className="fas fa-search "></i>
+      </span>
     </div>
   );
 };

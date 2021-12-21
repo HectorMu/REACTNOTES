@@ -17,40 +17,43 @@ const EditProfileCard = ({ user, toggleEditing, setUser }) => {
     toggleEditing(false);
   };
   return (
-    <form onSubmit={handleNamesChange} className="card-body">
+    <form onSubmit={handleNamesChange} className="shadow py-2">
       <div className="text-center shadow py-3">
         <i className="fas fa-user fa-5x"></i>
       </div>
-      <div className="row mt-2">
-        <div className="col">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Firstname"
-            onChange={(e) => setFirstname(e.target.value)}
-            value={firstname}
-            required
-          />
+      <div className="container">
+        <div className="row mt-2">
+          <div className="col">
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Firstname"
+              onChange={(e) => setFirstname(e.target.value)}
+              value={firstname}
+              required
+            />
+          </div>
+          <div className="col">
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Lastname"
+              onChange={(e) => setLastname(e.target.value)}
+              value={lastname}
+              required
+            />
+          </div>
         </div>
-        <div className="col">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Lastname"
-            onChange={(e) => setLastname(e.target.value)}
-            value={lastname}
-            required
-          />
-        </div>
+        <input
+          className="form-control mt-2"
+          type="text"
+          placeholder="Lastname"
+          value={user.email}
+          readOnly
+          required
+        />
       </div>
-      <input
-        className="form-control mt-2"
-        type="text"
-        placeholder="Lastname"
-        value={user.email}
-        readOnly
-        required
-      />
+
       <div className="d-flex justify-content-center gap-3 mt-4">
         <button type="submit" className="btn btn-primary rounded-circle">
           <i className="fas fa-save"></i>{" "}

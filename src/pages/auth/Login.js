@@ -24,8 +24,8 @@ const Login = ({ setUser }) => {
     navigate("/notes");
   };
   return (
-    <div className="row mt-5 vh-100 ">
-      <div className="col col-lg-4 col-md-4 bg-custom-1 d-sm-none d-none d-lg-block d-md-none d-xl-block">
+    <div className="row mt-5 vh-100 w-100">
+      <div className="col col-lg-4 col-md-4 bg-custom-1 d-sm-none d-none d-lg-block d-md-none d-xl-block shadow-lg">
         <div className=" d-flex flex-column gap-2 text-center h-100 justify-content-center rounded ">
           <h1 className="display-4 my-4">Welcome back!</h1>
           <h1 className="display-5 my-4">
@@ -45,13 +45,13 @@ const Login = ({ setUser }) => {
       </div>
       <div className="col col-lg-5 col-xl-4 col-md-8 col-12 mx-auto my-auto">
         <div className="container">
-          <div id="login-card" className="card h-100 w-100">
-            <h5
-              className="card-header   text-center "
-              style={{ fontWeight: "bold", fontSize: "40px" }}
+          <div id="login-card" className="shadow ">
+            <div
+              className="card-header text-center fw-bolder text-white"
+              style={{ fontSize: "40px", backgroundColor: "#3c5c72" }}
             >
               Log In
-            </h5>
+            </div>
             <div className="card-body">
               <div className="card-text text-center d-lg-none d-xl-none">
                 Welcome back, log in to access your notes

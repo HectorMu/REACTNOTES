@@ -24,12 +24,12 @@ const SignUp = () => {
     navigate("/login");
   };
   return (
-    <div className="row mt-5 vh-100 ">
-      <div className="col col-lg-5 col-xl-6 col-md-8 col-12 mx-auto my-auto">
+    <div className="row mt-5 vh-100 w-100 g-0">
+      <div className="col-lg-5 col-xl-4 col-md-8 col-12 mx-auto my-auto">
         <div className="container">
           <div
             id="signup-form"
-            className="card bg-dark text-white"
+            className="shadow text-white"
             style={{ width: "100%", height: "100%" }}
           >
             <div className="card-body bg-custom-4 ">
@@ -127,7 +127,7 @@ const SignUp = () => {
         </div>
       </div>
       <div className="col col-lg-4 col-md-4 bg-custom-1 d-sm-none d-none d-lg-block d-md-none d-xl-block">
-        <div className=" d-flex flex-column gap-2 text-center h-100 justify-content-center rounded ">
+        <div className=" d-flex flex-column gap-2 text-center h-100 justify-content-center ">
           <h1 className="display-4 my-4">Welcome!</h1>
           <h1 className="display-5 my-4">
             Create an account to start saving notes.
@@ -137,7 +137,7 @@ const SignUp = () => {
               <p style={{ fontSize: "22px", fontWeight: "bolder" }}>
                 ¿You already have an account?
               </p>
-              <Link to="/login" className="btn btn-primary btn-lg w-100">
+              <Link to="/login" className="btn btn-primary btn-lg">
                 Log in now
               </Link>
             </div>

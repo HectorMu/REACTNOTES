@@ -7,6 +7,7 @@ import NoNotes from "../../components/Notes/NoNotes";
 import AddNoteButtonFixed from "../../components/Notes/AddNoteButtonFixed";
 import FixedSortButton from "../../components/Notes/FixedSortButton";
 import SortButton from "../../components/Notes/SortButton";
+import Loading from "../../components/Global/Loading";
 
 const GetNotesHandler = async () => {
   const data = await getNotes();
@@ -17,10 +18,17 @@ const UserNotes = () => {
   const [notes, setNotes] = useState([]);
   const [hasNotes, setHasnotes] = useState(true);
   const [sort, setSort] = useState("All");
+  const [isLoading, setIsLoading] = useState(false);
 
   const SetNotesHandler = useCallback(async () => {
+    setIsLoading(true);
     const data = await GetNotesHandler();
-    if (data === false) return setHasnotes(false);
+    if (data === false) {
+      setIsLoading(false);
+      setHasnotes(false);
+      return;
+    }
+    setIsLoading(false);
     setNotes(data);
   }, []);
 
@@ -38,6 +46,7 @@ const UserNotes = () => {
   useEffect(() => {
     SetNotesHandler();
   }, [SetNotesHandler]);
+
   return (
     <div className="container-fluid  mt-4 py-5">
       <div className="row">
@@ -61,7 +70,7 @@ const UserNotes = () => {
               setNotes={setNotes}
             />
           ) : null}
-
+          {isLoading === true ? <Loading /> : null}
           {hasNotes === true ? (
             <Notes Notes={notes} callback={SetNotesHandler} />
           ) : (

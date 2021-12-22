@@ -19,9 +19,9 @@ const ContactForm = () => {
     }
   };
   return (
-    <div id="formcard" className="card mt-5 mb-4">
-      <div className="card-body py-5">
-        <h2 className="display-4 font-weight-bolder text-center">Your data</h2>
+    <div id="formcard" className="shadow-lg rounded-3 mt-5 mb-4">
+      <div className="card-body  py-5">
+        <h2 className="display-4 fw-bolder text-center">Your data</h2>
         <form onSubmit={handleContactSubmit}>
           <div className="form-group"></div>
           <input

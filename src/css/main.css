@@ -334,3 +334,6 @@ input:focus {
 .custom-shape-divider-top-1640127540 .shape-fill {
   fill: #dedaf2;
 }
+.c-pointer {
+  cursor: pointer;
+}

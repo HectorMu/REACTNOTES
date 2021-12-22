@@ -47,6 +47,12 @@ export const getOne = async (id) => {
 
 export const saveNote = async (title, content, importance) => {
   const token = window.localStorage.getItem("NNtoken");
+  let today = new Date();
+  const day = today.toLocaleDateString("en-US");
+  const hours =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+  const createdat = day + " " + hours;
   try {
     const response = await fetch(`${baseUrl}/save`, {
       method: "POST",
@@ -58,6 +64,7 @@ export const saveNote = async (title, content, importance) => {
         title,
         content,
         importance,
+        createdat,
       }),
     });
     const results = await response.json();

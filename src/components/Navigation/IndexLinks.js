@@ -1,6 +1,6 @@
 const IndexLinks = () => {
   return (
-    <>
+    <div className="d-flex  flex-lg-row flex-xl-row flex-column align-items-center">
       <div className="navbar-nav">
         <a className="nav-link" href="#home">
           Home
@@ -21,7 +21,7 @@ const IndexLinks = () => {
           Contact
         </a>
       </div>
-    </>
+    </div>
   );
 };
 

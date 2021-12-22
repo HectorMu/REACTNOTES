@@ -11,7 +11,7 @@ const Navigation = ({ user, setUser }) => {
   }, []);
 
   return (
-    <div>
+    <div className="w-100">
       <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-custom-1">
         <div className="container">
           <Link to="/" className="navbar-brand">

@@ -11,12 +11,20 @@ const LandingPage = () => {
       <section id="home" data-home="home" className="bg-custom-1 py-5 mt-5">
         <div className="container">
           <div className="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
+            >
               <div className="d-flex justify-content-center">
                 <img src={addnotes} className="w-75" alt="addnote" />
               </div>
             </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div
+              data-aos="fade-down"
+              data-aos-duration="1000"
+              className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
+            >
               <div id="header-card" className="card rounded-0">
                 <div className="card-body d-flex flex-column py-5">
                   <h1
@@ -71,18 +79,53 @@ const LandingPage = () => {
           </h1>
           <div className="container">
             <div className="d-flex flex-row justify-content-center">
-              <div id="circle1" className="circle mx-1">
+              <div
+                data-aos="flip-down"
+                data-aos-duration="800"
+                id="circle1"
+                className="circle mx-1"
+              >
                 1
               </div>
-              <i id="arrow1" className="fas fa-arrow-circle-right fa-3x mx-1" />
-              <div id="circle2" className="circle mx-1">
+              <i
+                data-aos="flip-down"
+                data-aos-delay="250"
+                data-aos-duration="800"
+                id="arrow1"
+                className="fas fa-arrow-circle-right fa-3x mx-1"
+              />
+              <div
+                data-aos="flip-left"
+                data-aos-delay="500"
+                data-aos-duration="800"
+                id="circle2"
+                className="circle mx-1"
+              >
                 2
               </div>
-              <i id="arrow2" className="fas fa-arrow-circle-right fa-3x mx-1" />
-              <div id="circle3" className="circle mx-1">
+              <i
+                data-aos="flip-right"
+                data-aos-delay="750"
+                data-aos-duration="800"
+                id="arrow2"
+                className="fas fa-arrow-circle-right fa-3x mx-1"
+              />
+              <div
+                data-aos="flip-left"
+                data-aos-delay="1000"
+                data-aos-duration="800"
+                id="circle3"
+                className="circle mx-1"
+              >
                 3
               </div>
-              <i id="check" className="fas fa-check fa-3x mx-1" />
+              <i
+                data-aos="flip-right"
+                data-aos-delay="1250"
+                data-aos-duration="800"
+                id="check"
+                className="fas fa-check fa-3x mx-1"
+              />
             </div>
           </div>
         </div>
@@ -96,11 +139,20 @@ const LandingPage = () => {
                 <h3 className="fw-bolder display-5 text-center">
                   Sign in using your favorite email.
                 </h3>
-                <i className="far fa-envelope fa-6x mb-4 mt-5 d-none d-sm-block text-dark  shadow-lg py-5 px-5 rounded-3" />
+                <i
+                  data-aos="flip-right"
+                  data-aos-easing="ease-out-cubic"
+                  data-aos-duration="800"
+                  className="far fa-envelope fa-6x mb-4 mt-5 d-none d-sm-block text-dark  shadow-lg py-5 px-5 rounded-3"
+                />
               </div>
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-6 ">
-              <div className="d-flex justify-content-center">
+              <div
+                data-aos="zoom-in-down"
+                data-aos-duration="800"
+                className="d-flex justify-content-center"
+              >
                 <img src={signin} className="w-75" alt="" />
               </div>
             </div>
@@ -126,7 +178,11 @@ const LandingPage = () => {
         <div className="container">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-6 ">
-              <div className="d-flex justify-content-center">
+              <div
+                data-aos="zoom-in-up"
+                data-aos-duration="800"
+                className="d-flex justify-content-center"
+              >
                 <img src={login} alt="" className="w-75" />
               </div>
             </div>
@@ -136,7 +192,12 @@ const LandingPage = () => {
                 <h3 className="fw-bolder display-5 text-center">
                   Log in into your account.
                 </h3>
-                <i className="fas fa-unlock-alt fa-6x mb-4 mt-5 d-none d-sm-block text-dark  shadow-lg py-5 px-5 rounded-3" />
+                <i
+                  data-aos="flip-left"
+                  data-aos-easing="ease-out-cubic"
+                  data-aos-duration="800"
+                  className="fas fa-unlock-alt fa-6x mb-4 mt-5 d-none d-sm-block text-dark  shadow-lg py-5 px-5 rounded-3"
+                />
               </div>
             </div>
           </div>
@@ -166,12 +227,21 @@ const LandingPage = () => {
                 <h3 className="fw-bolder display-5 text-center">
                   Start saving notes!.
                 </h3>
-                <i className="far fa-save fa-6x mb-4 mt-5 d-none d-sm-block text-dark shadow-lg py-5 px-5 rounded-3" />
+                <i
+                  data-aos="flip-right"
+                  data-aos-easing="ease-out-cubic"
+                  data-aos-duration="800"
+                  className="far fa-save fa-6x mb-4 mt-5 d-none d-sm-block text-dark shadow-lg py-5 px-5 rounded-3"
+                />
               </div>
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-6 ">
-              <div className="d-flex justify-content-center">
-                <img src={save} className="w-75" alt="" />
+              <div
+                data-aos="zoom-in-down"
+                data-aos-duration="800"
+                className="d-flex justify-content-center"
+              >
+                <img src={save} className="w-50" alt="" />
               </div>
             </div>
           </div>
@@ -192,22 +262,34 @@ const LandingPage = () => {
           </svg>
         </div>
       </div>
-      <section id="services" className="bg-custom-1 pb-5">
+      <section className="bg-custom-1 pb-5">
         <div className="bg-dark py-4 text-white mb-4">
-          <h1 className="fw-bolder  text-center display-4">
+          <h1
+            data-aos="flip-up"
+            data-aos-duration="800"
+            className="fw-bolder  text-center display-4"
+          >
             Meet our services!
           </h1>
           <div className="container">
-            <div className="d-flex justify-content-center">
+            <div
+              data-aos="fade-down"
+              data-aos-duration="800"
+              className="d-flex justify-content-center"
+            >
               <i className="fas fa-hands fa-4x"></i>
             </div>
           </div>
         </div>
-        <div className="container">
+        <div id="services" className="container">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-6">
               <div className="1 w-100 h-100 pt-2 px-2 d-flex flex-column text-center justify-content-center">
-                <h1 className="fw-bolder mt-4">
+                <h1
+                  data-aos="fade-down"
+                  data-aos-duration="800"
+                  className="fw-bolder mt-4"
+                >
                   Why choose us
                   <i className="fas fa-question" />
                 </h1>
@@ -223,7 +305,12 @@ const LandingPage = () => {
             <div className="col-12 col-sm-12 col-md-12 col-lg-6">
               <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
                 <div className="col mb-2">
-                  <div id="card1" className="card">
+                  <div
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    id="card1"
+                    className="card"
+                  >
                     <div className="card-body">
                       <h5 className="card-title text-center fw-bolder">
                         Security
@@ -238,7 +325,13 @@ const LandingPage = () => {
                   </div>
                 </div>
                 <div className="col mb-2">
-                  <div id="card2" className="card">
+                  <div
+                    data-aos="fade-down"
+                    data-aos-delay="200"
+                    data-aos-duration="800"
+                    id="card2"
+                    className="card"
+                  >
                     <div className="card-body">
                       <h5 className="card-title text-center fw-bolder">
                         Productivity
@@ -253,7 +346,13 @@ const LandingPage = () => {
                   </div>
                 </div>
                 <div className="col mb-2">
-                  <div id="card3" className="card">
+                  <div
+                    data-aos="fade-down"
+                    data-aos-delay="400"
+                    data-aos-duration="800"
+                    id="card3"
+                    className="card"
+                  >
                     <div className="card-body">
                       <h5 className="card-title text-center fw-bolder">
                         Fast and Friendly
@@ -268,7 +367,13 @@ const LandingPage = () => {
                   </div>
                 </div>
                 <div className="col mb-2">
-                  <div id="card4" className="card">
+                  <div
+                    data-aos="fade-up"
+                    data-aos-delay="600"
+                    data-aos-duration="800"
+                    id="card4"
+                    className="card"
+                  >
                     <div className="card-body">
                       <h5 className="card-title text-center fw-bolder">
                         Profile Customization
@@ -287,7 +392,7 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      <section id="contact" className="position-relative">
+      <section className="position-relative">
         <div className="custom-shape-divider-top-1640126119">
           <svg
             data-name="Layer 1"
@@ -303,9 +408,13 @@ const LandingPage = () => {
         </div>
       </section>
       <section className="py-5 mt-5 ">
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-6">
+        <div id="contact" className="container">
+          <div className="row mt-5">
+            <div
+              data-aos="fade-up"
+              data-aos-duration="800"
+              className="col-12 col-sm-12 col-md-12 col-lg-6"
+            >
               <div className=" py-5 w-100 h-100 pt-2 px-3 d-flex flex-column text-center justify-content-center ">
                 <h2 className="display-4 fw-bolder py-2 rounded-pill bg-custom-1 mt-3">
                   Contact
@@ -318,13 +427,17 @@ const LandingPage = () => {
                 <i className="fas fa-envelope-open-text fa-6x" />
               </div>
             </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-6">
+            <div
+              data-aos="fade-down"
+              data-aos-duration="800"
+              className="col-12 col-sm-12 col-md-12 col-lg-6"
+            >
               <ContactForm />
             </div>
           </div>
         </div>
       </section>
-      <div id="backtop" className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center">
         <a
           href="#home"
           className="btn btn-primary btn-lg rounded-circle mb-3"

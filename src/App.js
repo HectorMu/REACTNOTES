@@ -1,7 +1,8 @@
-import Navigation from "./components/Navigation/Navigation";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
+import "../node_modules/aos/dist/aos.css";
 import "./css/main.css";
+import Navigation from "./components/Navigation/Navigation";
 import { Routes, Route } from "react-router-dom";
 import UserNotes from "./pages/common/UserNotes";
 import NotFound from "./pages/status/NotFound";
@@ -12,15 +13,20 @@ import EditNote from "./pages/common/EditNote";
 import Profile from "./pages/common/Profile";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 import UserLogged from "./components/Authentication/UserLogged";
 import "./lib/moment-config";
+import AOS from "aos";
 
 function App() {
   const userData = JSON.parse(window.localStorage.getItem("userSession"));
   const [user, setUser] = useState(userData);
 
+  useEffect(() => {
+    AOS.init();
+    console.log("aos initialized");
+  }, []);
   return (
     <div>
       <Navigation user={user} setUser={setUser} />

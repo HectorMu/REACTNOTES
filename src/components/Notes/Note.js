@@ -59,17 +59,17 @@ const Note = ({ Note, renderNotes }) => {
           <div className="col-11 col-md-11 col-lg-11 col-sm-11">
             <div className="card-body">
               <h5
-                className={`card-text  c-pointer ${
-                  onTruncateTitle === true ? "text-truncate " : ""
-                } `}
+                className={`card-text  ${
+                  Note.title.length >= 22 ? "c-pointer" : ""
+                } ${onTruncateTitle === true ? "text-truncate " : ""} `}
                 onClick={toggleTruncateTitle}
               >
                 {Note.title}
               </h5>
               <p
-                className={`card-text c-pointer ${
-                  onTruncateContent === true ? "text-truncate " : ""
-                } `}
+                className={`card-text ${
+                  Note.content.length >= 22 ? "c-pointer" : ""
+                } ${onTruncateContent === true ? "text-truncate" : ""} `}
                 onClick={toggleTruncateContent}
               >
                 {Note.content}

@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import { signup } from "../../services/auth";
 
 const SignUp = () => {

@@ -1,6 +1,7 @@
 import Navigation from "./components/Navigation/Navigation";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
+import "./css/main.css";
 import { Routes, Route } from "react-router-dom";
 import UserNotes from "./pages/common/UserNotes";
 import NotFound from "./pages/status/NotFound";
@@ -11,7 +12,7 @@ import EditNote from "./pages/common/EditNote";
 import Profile from "./pages/common/Profile";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 import UserLogged from "./components/Authentication/UserLogged";
 import "./lib/moment-config";

@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/REACTNOTES-API/static/css/main.dea8d795.chunk.css",
-    "main.js": "/REACTNOTES-API/static/js/main.9bdf4a97.chunk.js",
-    "main.js.map": "/REACTNOTES-API/static/js/main.9bdf4a97.chunk.js.map",
+    "main.js": "/REACTNOTES-API/static/js/main.b5d3e33f.chunk.js",
+    "main.js.map": "/REACTNOTES-API/static/js/main.b5d3e33f.chunk.js.map",
     "runtime-main.js": "/REACTNOTES-API/static/js/runtime-main.1d5552c7.js",
     "runtime-main.js.map": "/REACTNOTES-API/static/js/runtime-main.1d5552c7.js.map",
     "static/css/2.0a9ec390.chunk.css": "/REACTNOTES-API/static/css/2.0a9ec390.chunk.css",
@@ -24,6 +24,6 @@
     "static/css/2.0a9ec390.chunk.css",
     "static/js/2.c54006d0.chunk.js",
     "static/css/main.dea8d795.chunk.css",
-    "static/js/main.9bdf4a97.chunk.js"
+    "static/js/main.b5d3e33f.chunk.js"
   ]
 }

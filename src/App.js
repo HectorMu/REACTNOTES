@@ -25,7 +25,10 @@ function App() {
     <div>
       <Navigation user={user} setUser={setUser} />
       <Routes>
-        <Route path="/" element={<UserLogged view={LandingPage} />} />
+        <Route
+          path="/REACTNOTES-API"
+          element={<UserLogged view={LandingPage} />}
+        />
         <Route path="/notes/" element={<PrivateRoute view={UserNotes} />} />
         <Route path="/notes/add" element={<PrivateRoute view={AddNote} />} />
         <Route

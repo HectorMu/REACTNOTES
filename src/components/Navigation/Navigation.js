@@ -14,7 +14,7 @@ const Navigation = ({ user, setUser }) => {
     <div>
       <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-custom-1">
         <div className="container">
-          <Link to="/" className="navbar-brand">
+          <Link to="/REACTNOTES-API" className="navbar-brand">
             Node Notes
           </Link>
           {user === null ? (

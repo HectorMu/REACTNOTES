@@ -8,7 +8,7 @@ import signin from "../assets/signin.svg";
 const LandingPage = () => {
   return (
     <div>
-      <section id="home" className="bg-custom-1 py-5 mt-5">
+      <section id="home" data-home="home" className="bg-custom-1 py-5 mt-5">
         <div className="container">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">

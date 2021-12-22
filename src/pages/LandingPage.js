@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import ContactForm from "../components/LandingPage/ContactForm";
+import addnotes from "../assets/addnotes.svg";
+import login from "../assets/login.svg";
+import save from "../assets/save.svg";
+import signin from "../assets/signin.svg";
 
 const LandingPage = () => {
   return (
@@ -9,7 +13,7 @@ const LandingPage = () => {
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
               <div className="d-flex justify-content-center">
-                <img src="assets/addnotes.svg" className="w-75" alt="" />
+                <img src={addnotes} className="w-75" alt="addnote" />
               </div>
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -97,7 +101,7 @@ const LandingPage = () => {
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-6 ">
               <div className="d-flex justify-content-center">
-                <img src="assets/signin.svg" className="w-75" alt="" />
+                <img src={signin} className="w-75" alt="" />
               </div>
             </div>
           </div>
@@ -123,7 +127,7 @@ const LandingPage = () => {
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-6 ">
               <div className="d-flex justify-content-center">
-                <img src="assets/login.svg" alt="" className="w-75" />
+                <img src={login} alt="" className="w-75" />
               </div>
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-6 ">
@@ -167,7 +171,7 @@ const LandingPage = () => {
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-6 ">
               <div className="d-flex justify-content-center">
-                <img src="assets/save.svg" className="w-75" alt="" />
+                <img src={save} className="w-75" alt="" />
               </div>
             </div>
           </div>

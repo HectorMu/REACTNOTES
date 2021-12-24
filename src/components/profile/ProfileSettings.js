@@ -6,12 +6,9 @@ const ProfileSettings = ({ toggleConfig, setUser }) => {
   const [onPasswordChange, setOnPasswordChange] = useState(false);
   const [onDeleteAccount, setOnDeleteAccount] = useState(false);
 
-  const togglePasswordChange = () => {
-    setOnPasswordChange(!onPasswordChange);
-  };
-  const toggleDeleteAccount = () => {
-    setOnDeleteAccount(!onDeleteAccount);
-  };
+  const togglePasswordChange = () => setOnPasswordChange(!onPasswordChange);
+
+  const toggleDeleteAccount = () => setOnDeleteAccount(!onDeleteAccount);
 
   return (
     <div className="shadow py-2">

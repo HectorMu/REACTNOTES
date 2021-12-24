@@ -8,8 +8,10 @@ import AddNoteButtonFixed from "../../components/Notes/AddNoteButtonFixed";
 import FixedSortButton from "../../components/Notes/FixedSortButton";
 import SortButton from "../../components/Notes/SortButton";
 import Loading from "../../components/Global/Loading";
+import FixedButtonContainer from "../../components/Global/FixedButtonContainer";
+import FloatingSearch from "../../components/Notes/FloatingSearch";
 
-const GetNotesHandler = async () => {
+export const GetNotesHandler = async () => {
   const data = await getNotes();
   if (data.statusText === "userNotesEmpty") return false;
   return data;
@@ -19,6 +21,9 @@ const UserNotes = () => {
   const [hasNotes, setHasnotes] = useState(true);
   const [sort, setSort] = useState("All");
   const [isLoading, setIsLoading] = useState(false);
+  const [onFloatingSearch, setFloatingSearch] = useState(false);
+
+  const toggleFloatingSearch = () => setFloatingSearch(!onFloatingSearch);
 
   const SetNotesHandler = useCallback(async () => {
     setIsLoading(true);
@@ -49,6 +54,12 @@ const UserNotes = () => {
 
   return (
     <div className="container-fluid  mt-4 py-5">
+      <FloatingSearch
+        Notes={notes}
+        callback={SetNotesHandler}
+        setNotes={setNotes}
+        onFloatingSearch={onFloatingSearch}
+      />
       <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 ">
           <Link
@@ -57,9 +68,18 @@ const UserNotes = () => {
           >
             <i className="fas fa-plus mr-2"></i> New note
           </Link>
-          <AddNoteButtonFixed />
+
           <SortButton setSort={setSort} />
-          <FixedSortButton setSort={setSort} />
+          <FixedButtonContainer position={"right"}>
+            <AddNoteButtonFixed />
+            <FixedSortButton setSort={setSort} />
+            <button
+              onClick={toggleFloatingSearch}
+              className="btn btn-primary btn-lg rounded-circle d-xl-none d-lg-none"
+            >
+              <i className="fas fa-search"></i>
+            </button>
+          </FixedButtonContainer>
         </div>
 
         <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">

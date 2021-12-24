@@ -5,7 +5,7 @@ const AddNoteButtonFixed = () => {
     <div className="shadow-lg rounded-circle">
       <Link
         to="/notes/add"
-        className="fixed-bottom-right  rounded-circle btn btn-primary btn-lg d-xl-none d-lg-none"
+        className="  rounded-circle btn btn-primary btn-lg d-xl-none d-lg-none"
       >
         <i className="fas fa-plus"></i>
       </Link>

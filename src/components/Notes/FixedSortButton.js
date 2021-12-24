@@ -2,13 +2,13 @@ const FixedButton = ({ setSort }) => {
   return (
     <div className="dropdown">
       <button
-        className={`fixed-bottom-left  rounded-circle btn btn-primary btn-lg d-xl-none d-lg-none`}
+        className={` rounded-circle btn btn-primary btn-lg  d-xl-none d-lg-none`}
         type="button"
         id="sortNotesButton"
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        <i className="far fa-eye"></i>
+        <i className="far fa-eye "></i>
       </button>
       <ul className="dropdown-menu " aria-labelledby="sortNotesButton">
         <li>

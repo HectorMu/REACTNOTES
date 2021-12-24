@@ -16,18 +16,14 @@ const Note = ({ Note, renderNotes }) => {
   const [onHover, setOnHover] = useState(false);
 
   //i know i can set each state directly the onclick property, but this way is more verbose
-  const toggleTruncateContent = () => {
-    setOnTruncateContent(!onTruncateContent);
-  };
-  const toggleTruncateTitle = () => {
-    setOnTruncateTitle(!onTruncateTitle);
-  };
-  const toggleShadowOnHover = () => {
-    setOnHover(!onHover);
-  };
-  const toggleRelativeTime = () => {
-    setOnRelativeTime(!onRelativeTime);
-  };
+  const toggleTruncateContent = () => setOnTruncateContent(!onTruncateContent);
+
+  const toggleTruncateTitle = () => setOnTruncateTitle(!onTruncateTitle);
+
+  const toggleShadowOnHover = () => setOnHover(!onHover);
+
+  const toggleRelativeTime = () => setOnRelativeTime(!onRelativeTime);
+
   const deleteClick = async (id) => {
     const deleteConfirm = window.confirm("Are you sure to delete this note?");
     if (deleteConfirm) {

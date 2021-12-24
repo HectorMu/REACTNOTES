@@ -14,12 +14,9 @@ const Profile = ({ user, setUser }) => {
     setUser(data);
   }, [setUser]);
 
-  const toggleEditing = () => {
-    setOnEditing(!onEditing);
-  };
-  const toggleConfig = () => {
-    setOnConfig(!onConfig);
-  };
+  const toggleEditing = () => setOnEditing(!onEditing);
+
+  const toggleConfig = () => setOnConfig(!onConfig);
 
   useEffect(() => {
     getProfileDataHandler();

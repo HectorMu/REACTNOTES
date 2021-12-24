@@ -2,12 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import SessionContextProvider from "./contexts/SessionContextProvider";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <Router>
-    <App />
+    <SessionContextProvider>
+      <App />
+    </SessionContextProvider>
   </Router>,
   document.getElementById("root")
 );

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const AddNoteButtonFixed = () => {
+const FloatingAddButton = () => {
   return (
     <div className="shadow-lg rounded-circle">
       <Link
@@ -13,4 +13,4 @@ const AddNoteButtonFixed = () => {
   );
 };
 
-export default AddNoteButtonFixed;
+export default FloatingAddButton;

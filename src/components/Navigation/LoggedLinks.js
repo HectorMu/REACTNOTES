@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { logout } from "../../services/auth";
 
-const LoggedLinks = ({ setUser, user }) => {
+const LoggedLinks = ({ user, setUser }) => {
   let navigate = useNavigate();
   const handleLogOut = () => {
     setUser(null);

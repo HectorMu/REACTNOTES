@@ -1,9 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { login } from "../../services/auth";
 import { toast } from "react-hot-toast";
+import { Session } from "../../contexts/SessionContextProvider";
 
-const Login = ({ setUser }) => {
+const Login = () => {
+  const { setUser } = useContext(Session);
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");

@@ -4,12 +4,13 @@ import SearchNote from "../../components/Notes/SearchNote";
 import { Link } from "react-router-dom";
 import { getNotes } from "../../services/notes";
 import NoNotes from "../../components/Notes/NoNotes";
-import AddNoteButtonFixed from "../../components/Notes/AddNoteButtonFixed";
-import FixedSortButton from "../../components/Notes/FixedSortButton";
+import FloatingAddButton from "../../components/Notes/FloatingAddButton";
+import FloatingSortButton from "../../components/Notes/FloatingSortButton";
 import SortButton from "../../components/Notes/SortButton";
 import Loading from "../../components/Global/Loading";
 import FixedButtonContainer from "../../components/Global/FixedButtonContainer";
 import FloatingSearch from "../../components/Notes/FloatingSearch";
+import FloatingSearchButton from "../../components/Notes/FloatingSearchButton";
 
 export const GetNotesHandler = async () => {
   const data = await getNotes();
@@ -71,14 +72,9 @@ const UserNotes = () => {
 
           <SortButton setSort={setSort} />
           <FixedButtonContainer position={"right"}>
-            <AddNoteButtonFixed />
-            <FixedSortButton setSort={setSort} />
-            <button
-              onClick={toggleFloatingSearch}
-              className="btn btn-primary btn-lg rounded-circle d-xl-none d-lg-none"
-            >
-              <i className="fas fa-search"></i>
-            </button>
+            <FloatingAddButton />
+            <FloatingSortButton setSort={setSort} />
+            <FloatingSearchButton toggleFloatingSearch={toggleFloatingSearch} />
           </FixedButtonContainer>
         </div>
 

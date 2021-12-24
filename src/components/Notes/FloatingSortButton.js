@@ -1,4 +1,4 @@
-const FixedButton = ({ setSort }) => {
+const FloatingSortButton = ({ setSort }) => {
   return (
     <div className="dropdown">
       <button
@@ -36,4 +36,4 @@ const FixedButton = ({ setSort }) => {
   );
 };
 
-export default FixedButton;
+export default FloatingSortButton;

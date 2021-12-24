@@ -1,8 +1,10 @@
 import { Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { Session } from "../../contexts/SessionContextProvider";
 
-const PrivateRoute = ({ view: Component, setUser }) => {
-  const user = JSON.parse(window.localStorage.getItem("userSession"));
-  if (user !== null) return <Component user={user} setUser={setUser} />;
+const PrivateRoute = ({ view: Component }) => {
+  const { user } = useContext(Session);
+  if (user !== null) return <Component />;
   return <Navigate to="/login" replace={true} />;
 };
 

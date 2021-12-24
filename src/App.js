@@ -13,23 +13,24 @@ import EditNote from "./pages/common/EditNote";
 import Profile from "./pages/common/Profile";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 import UserLogged from "./components/Authentication/UserLogged";
 import "./lib/moment-config";
 import AOS from "aos";
+import { Session } from "./contexts/SessionContextProvider";
 
 function App() {
-  const userData = JSON.parse(window.localStorage.getItem("userSession"));
-  const [user, setUser] = useState(userData);
+  const { setUser } = useContext(Session);
 
   useEffect(() => {
     AOS.init();
-    console.log("aos initialized");
-  }, []);
+    const userData = JSON.parse(window.localStorage.getItem("userSession"));
+    setUser(userData);
+  }, [setUser]);
   return (
     <div>
-      <Navigation user={user} setUser={setUser} />
+      <Navigation />
       <Routes>
         <Route path="/" element={<UserLogged view={LandingPage} />} />
         <Route path="/notes/" element={<PrivateRoute view={UserNotes} />} />
@@ -38,14 +39,8 @@ function App() {
           path="/notes/edit/:id"
           element={<PrivateRoute view={EditNote} />}
         />
-        <Route
-          path="/profile"
-          element={<PrivateRoute view={Profile} setUser={setUser} />}
-        />
-        <Route
-          path="/login"
-          element={<UserLogged view={Login} setUser={setUser} />}
-        />
+        <Route path="/profile" element={<PrivateRoute view={Profile} />} />
+        <Route path="/login" element={<UserLogged view={Login} />} />
         <Route path="/signup" element={<UserLogged view={SignUp} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,15 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Session } from "../../contexts/SessionContextProvider";
 import LoggedLinks from "./LoggedLinks";
 import NotLoggedLinks from "./NotLoggedLinks";
 
-const Navigation = ({ user, setUser }) => {
+const Navigation = () => {
+  const { user, setUser } = useContext(Session);
   useEffect(() => {
     const userData = JSON.parse(window.localStorage.getItem("userSession"));
     setUser(userData);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  }, [setUser]);
   return (
     <div className="w-100">
       <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-custom-1">

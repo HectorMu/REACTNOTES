@@ -1,10 +1,12 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useContext } from "react";
 import EditProfileCard from "../../components/profile/EditProfileCard";
 import ProfileCard from "../../components/profile/ProfileCard";
 import ProfileSettings from "../../components/profile/ProfileSettings";
+import { Session } from "../../contexts/SessionContextProvider";
 import { getProfileData } from "../../services/profile";
 
-const Profile = ({ user, setUser }) => {
+const Profile = () => {
+  const { user, setUser } = useContext(Session);
   const [onEditing, setOnEditing] = useState(false);
   const [onConfig, setOnConfig] = useState(false);
 

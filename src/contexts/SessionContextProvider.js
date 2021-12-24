@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 export const Session = React.createContext();
 function SessionContextProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const userData = JSON.parse(window.localStorage.getItem("userSession"));
+  const [user, setUser] = useState(userData);
 
   return (
     <Session.Provider value={{ user, setUser }}>{children}</Session.Provider>

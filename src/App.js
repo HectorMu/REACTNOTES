@@ -13,21 +13,16 @@ import EditNote from "./pages/common/EditNote";
 import Profile from "./pages/common/Profile";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 import UserLogged from "./components/Authentication/UserLogged";
 import "./lib/moment-config";
 import AOS from "aos";
-import { Session } from "./contexts/SessionContextProvider";
 
 function App() {
-  const { setUser } = useContext(Session);
-
   useEffect(() => {
     AOS.init();
-    const userData = JSON.parse(window.localStorage.getItem("userSession"));
-    setUser(userData);
-  }, [setUser]);
+  }, []);
   return (
     <div>
       <Navigation />

@@ -27,7 +27,6 @@ const FloatingSearch = ({ Notes, setNotes, callback, onFloatingSearch }) => {
           className="form-control rounded-pill shadow-lg form-control-lg"
           placeholder="Search..."
           onChange={() => SearchNote()}
-          autoFocus
           ref={search}
         />
         <button onClick={CleanInput} className="xd btn">

@@ -18,6 +18,8 @@ import PrivateRoute from "./components/Authentication/PrivateRoute";
 import UserLogged from "./components/Authentication/UserLogged";
 import "./lib/moment-config";
 import AOS from "aos";
+import RecoverPassword from "./pages/auth/RecoverPassword";
+import ResetPassword from "./pages/auth/ResetPassword";
 
 function App() {
   useEffect(() => {
@@ -37,6 +39,14 @@ function App() {
         <Route path="/profile" element={<PrivateRoute view={Profile} />} />
         <Route path="/login" element={<UserLogged view={Login} />} />
         <Route path="/signup" element={<UserLogged view={SignUp} />} />
+        <Route
+          path="/recover-password"
+          element={<UserLogged view={RecoverPassword} />}
+        />
+        <Route
+          path="/reset-password/:token"
+          element={<UserLogged view={ResetPassword} />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />

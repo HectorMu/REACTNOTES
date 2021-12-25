@@ -52,3 +52,41 @@ export const logout = () => {
   window.localStorage.removeItem("userSession");
   window.localStorage.removeItem("NNtoken");
 };
+
+export const SendRecoverEmail = async (email) => {
+  try {
+    const response = await fetch(`${baseUrl}/reset-password/`, {
+      method: `POST`,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+      }),
+    });
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    if (!checkInternetConnection()) {
+      return new errorCatcher(false, "No internet connection");
+    }
+    return new errorCatcher(
+      false,
+      "We are having connectivity issues with our server."
+    );
+  }
+};
+
+export const VerifyEmailToken = async (token) => {
+  try {
+    const response = await fetch(`${baseUrl}/verify-email-token/${token}`);
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    if (!checkInternetConnection()) {
+      return new errorCatcher(false, "No internet connection");
+    }
+    return new errorCatcher(
+      false,
+      "We are having connectivity issues with our server."
+    );
+  }
+};

@@ -80,7 +80,7 @@ const Login = () => {
                   />
                 </div>
                 <small>
-                  <Link to="/recover-password">Recover my password</Link>
+                  <Link to="/recover">Recover my password</Link>
                 </small>
                 <button
                   type="submit"

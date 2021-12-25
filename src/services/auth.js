@@ -77,7 +77,11 @@ export const SendRecoverEmail = async (email) => {
 
 export const VerifyEmailToken = async (token) => {
   try {
-    const response = await fetch(`${baseUrl}/verify-email-token/${token}`);
+    const response = await fetch(`${baseUrl}/verify-email-token/${token}`, {
+      headers: { "Content-Type": "application/json" },
+      method: "GET",
+    });
+
     return await response.json();
   } catch (error) {
     console.log(error);

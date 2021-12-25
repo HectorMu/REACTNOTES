@@ -40,11 +40,11 @@ function App() {
         <Route path="/login" element={<UserLogged view={Login} />} />
         <Route path="/signup" element={<UserLogged view={SignUp} />} />
         <Route
-          path="/recover-password"
+          path="/recover"
           element={<UserLogged view={RecoverPassword} />}
         />
         <Route
-          path="/reset-password/:token"
+          path="/reset/:token"
           element={<UserLogged view={ResetPassword} />}
         />
         <Route path="*" element={<NotFound />} />

@@ -31,8 +31,9 @@ html {
 }
 
 .nav-link {
+  color: black !important;
+  font-weight: bolder;
   font-family: "Comfortaa", cursive;
-  transition: ease-in all 0.5s;
   font-size: 17px;
 }
 
@@ -41,7 +42,11 @@ html {
   font-weight: bold;
 }
 .navbar-brand {
-  color: black;
+  color: black !important;
+  font-weight: bold;
+}
+.navbar-brand:hover {
+  color: white !important;
 }
 
 #welcome {

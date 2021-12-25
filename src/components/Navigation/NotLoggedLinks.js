@@ -45,7 +45,7 @@ const NotLoggedLinks = () => {
           <div className="navbar-nav">
             <Link
               to="/signup"
-              className="btn btn-primary  btn-sm rounded-pill "
+              className="btn btn-primary  btn-sm rounded-pill fw-bold fs-6 "
             >
               Sign Up
             </Link>

@@ -55,7 +55,7 @@ export const logout = () => {
 
 export const SendRecoverEmail = async (email) => {
   try {
-    const response = await fetch(`${baseUrl}/reset-password/`, {
+    const response = await fetch(`${baseUrl}/recover-password/`, {
       method: `POST`,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -78,6 +78,31 @@ export const SendRecoverEmail = async (email) => {
 export const VerifyEmailToken = async (token) => {
   try {
     const response = await fetch(`${baseUrl}/verify-email-token/${token}`);
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    if (!checkInternetConnection()) {
+      return new errorCatcher(false, "No internet connection");
+    }
+    return new errorCatcher(
+      false,
+      "We are having connectivity issues with our server."
+    );
+  }
+};
+
+export const PasswordReset = async (token, password) => {
+  try {
+    const response = await fetch(
+      `${baseUrl}/reset-password/${token.toString()}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          password,
+        }),
+      }
+    );
     return await response.json();
   } catch (error) {
     console.log(error);

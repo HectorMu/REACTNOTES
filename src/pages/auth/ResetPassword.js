@@ -2,17 +2,39 @@ import { useEffect, useCallback, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/Global/Loading";
-import { VerifyEmailToken } from "../../services/auth";
+import { PasswordReset, VerifyEmailToken } from "../../services/auth";
 
 const ResetPassword = () => {
   let { token } = useParams();
   let navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+
+  const handlePasswordReset = async (e) => {
+    e.preventDefault();
+
+    if (password.length < 8)
+      return toast.error("Password must be 8 characters long.");
+    if (password !== confirm) return toast.error("Passwords don't match.");
+
+    const tokenResults = await VerifyEmailToken(token);
+    if (!tokenResults.status) {
+      navigate("/login");
+      return toast.error("The recover link has expired or has been corrupted.");
+    }
+    const results = await PasswordReset(token, password);
+
+    if (!results.status) return toast.error(results.statusText);
+
+    toast.success("Password changed succesfully.");
+
+    navigate("/login");
+  };
 
   const HandleTokenValidation = useCallback(async () => {
     setIsLoading(true);
     const results = await VerifyEmailToken(token);
-    console.log(results.status);
     if (!results.status) {
       setIsLoading(false);
       navigate("/login");
@@ -40,36 +62,28 @@ const ResetPassword = () => {
                 Recover my password
               </h5>
               <div className="card-body">
-                <form>
-                  <div className="form-group">
+                <form onSubmit={handlePasswordReset}>
+                  <div className="mb-3">
                     <input
                       type="password"
-                      id="newpass"
-                      name="newpass"
                       placeholder="New password"
                       className="form-control"
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                      required
                     />
                   </div>
-                  <small>
-                    <p id="res" />
-                  </small>
-                  <div className="form-group">
+                  <div className="mb-3">
                     <input
                       type="password"
-                      id="confirm"
-                      name="confirm"
                       placeholder="Confirm password"
                       className="form-control"
+                      onChange={(e) => setConfirm(e.target.value)}
+                      value={confirm}
+                      required
                     />
                   </div>
-                  <small>
-                    <p id="match" />
-                  </small>
-                  <button
-                    type="submit"
-                    id="savepass"
-                    className="btn  btn-primary w-100"
-                  >
+                  <button type="submit" className="btn  btn-primary w-100">
                     Change password
                   </button>
                 </form>

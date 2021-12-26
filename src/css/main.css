@@ -157,10 +157,6 @@ html {
   cursor: pointer;
 }
 
-.btn {
-  border-radius: 20px;
-}
-
 .section-color-1 {
   background-color: #bcd4be;
 }
@@ -378,3 +374,26 @@ input:focus {
   top: 5px;
   left: 85%;
 }
+
+/* Login shape */
+.custom-shape-divider-bottom-1640483682 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1640483682 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 200px;
+}
+
+.custom-shape-divider-bottom-1640483682 .shape-fill {
+  fill: #aabdc4;
+}
+/* /Login shape */

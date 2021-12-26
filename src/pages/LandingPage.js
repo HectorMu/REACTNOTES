@@ -43,7 +43,7 @@ const LandingPage = () => {
                   </p>
                   <Link
                     to="/signup"
-                    className="btn btn-primary btn-lg mt-5 mb-1 "
+                    className="btn btn-primary btn-lg mt-2 mb-1 "
                   >
                     Start to create
                   </Link>

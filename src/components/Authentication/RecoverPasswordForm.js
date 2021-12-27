@@ -9,7 +9,7 @@ const RecoverPasswordForm = () => {
     e.preventDefault();
     const results = await SendRecoverEmail(email.current.value);
     if (results.status) {
-      toast.success("An email with instructions has been sent to this email");
+      toast.success("An email with instructions has been sent to this email.");
     } else {
       toast.error(results.statusText);
     }

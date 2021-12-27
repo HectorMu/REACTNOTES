@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { deleteNote } from "../../services/notes";
 import Moment from "react-moment";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const styles = {
   cardWidth: {
@@ -25,18 +26,27 @@ const Note = ({ Note, renderNotes }) => {
   const toggleRelativeTime = () => setOnRelativeTime(!onRelativeTime);
 
   const deleteClick = async (id) => {
-    const deleteConfirm = window.confirm("Are you sure to delete this note?");
-    if (deleteConfirm) {
-      const results = await deleteNote(id);
-      if (results.authorized === false)
-        return toast.error("You need to authenticate delete a note.");
-      if (results.status) {
-        toast.success("Note deleted succesfully");
-        renderNotes();
-      } else {
-        toast.error("Something went wrong at deleting. Try again.");
+    Swal.fire({
+      text: "Do you want to delete this note?",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#0d6efd",
+      cancelButtonColor: "#bb2d3b",
+      confirmButtonText: "Yes",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteNote(id).then((results) => {
+          if (results.authorized === false)
+            return toast.error("You need to authenticate delete a note.");
+          if (results.status) {
+            toast.success("Note deleted succesfully");
+            renderNotes();
+          } else {
+            toast.error("Something went wrong at deleting. Try again.");
+          }
+        });
       }
-    }
+    });
   };
   return (
     <div className="col">

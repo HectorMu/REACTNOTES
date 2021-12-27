@@ -1,6 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { logout } from "../../services/auth";
 import { DeleteAccount } from "../../services/profile";
 
@@ -9,16 +10,23 @@ const DeleteAccountForm = ({ toggleDeleteAccount, setUser }) => {
   const [password, setPassword] = useState("");
   const handleAccountDeletion = async (e) => {
     e.preventDefault();
-    const confirmation = window.confirm(
-      "Last advise, are you sure to delete your account?"
-    );
-    if (!confirmation) return;
-    const results = await DeleteAccount(password);
-    if (!results.status) return toast.error(results.statusText);
-    logout();
-    setUser(null);
-    navigate("/login");
-    toast.success("Account deleted, we will miss you!");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This action can't be undone.",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#0d6efd",
+      cancelButtonColor: "#bb2d3b",
+      confirmButtonText: "Yes",
+    }).then(async (result) => {
+      if (!result.isConfirmed) return;
+      const results = await DeleteAccount(password);
+      if (!results.status) return toast.error(results.statusText);
+      logout();
+      setUser(null);
+      navigate("/login");
+      toast.success("Account deleted, we will miss you!");
+    });
   };
   return (
     <form onSubmit={handleAccountDeletion} className="w-100">

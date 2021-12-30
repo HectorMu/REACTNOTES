@@ -24,7 +24,11 @@ const Profile = () => {
     getProfileDataHandler();
   }, [getProfileDataHandler]);
   return (
-    <div className="container mt-5 pt-5">
+    <div
+      data-aos="fade-down"
+      data-aos-duration="1000"
+      className="container mt-5 pt-5"
+    >
       <div className="row">
         <div className="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 mx-auto">
           <div className="card shadow-lg">

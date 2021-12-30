@@ -32,7 +32,7 @@ const ResetPasswordForm = ({ token }) => {
     <div className="col-12 col-sm-12 col-md-8 col-lg-5 col-xl-5 mx-auto mt-5 py-5 container">
       <form
         onSubmit={handlePasswordReset}
-        className="card border-0 rounded-0 shadow-lg"
+        className="card border-0 rounded-0 shadow-lg py-4"
       >
         <div className="pt-3 ps-4 ">
           <h1 className=" fw-bolder ">Password reset</h1>

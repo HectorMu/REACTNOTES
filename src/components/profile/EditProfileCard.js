@@ -8,11 +8,15 @@ const EditProfileCard = ({ user, toggleEditing, setUser }) => {
 
   const handleNamesChange = async (e) => {
     e.preventDefault();
+
     const results = await ChangeProfileNames(firstname, lastname);
+
     if (!results.status) return toast.error(results.statusText);
+
     const { user } = results;
     window.localStorage.setItem("userSession", JSON.stringify(user));
     setUser(user);
+
     toast.success("Profile information changed succesfully");
     toggleEditing(false);
   };

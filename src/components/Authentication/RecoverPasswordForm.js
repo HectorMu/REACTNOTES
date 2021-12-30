@@ -1,16 +1,21 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { SendRecoverEmail } from "../../services/auth";
+import Loading from "../../components/Global/Loading";
 
 const RecoverPasswordForm = () => {
   const email = useRef("");
+  const [isLoading, setIsLoading] = useState(false);
   const handleEmailSending = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const results = await SendRecoverEmail(email.current.value);
     if (results.status) {
+      setIsLoading(false);
       toast.success("An email with instructions has been sent to this email.");
     } else {
+      setIsLoading(false);
       toast.error(results.statusText);
     }
   };
@@ -18,7 +23,7 @@ const RecoverPasswordForm = () => {
     <div className="col-12 col-sm-12 col-md-8 col-lg-5 col-xl-5 mx-auto mt-5 py-5 container">
       <form
         onSubmit={handleEmailSending}
-        className="card border-0 rounded-0 shadow-lg"
+        className="card border-0 rounded-0 shadow-lg py-4"
       >
         <div className="pt-3 ps-4 ">
           <h1 className=" fw-bolder ">Account recover</h1>
@@ -29,13 +34,17 @@ const RecoverPasswordForm = () => {
         </div>
         <div className="card-body">
           <div className="input-group mb-2">
-            <input
-              className="form-control mb-2"
-              type="email"
-              placeholder="Your email goes here..."
-              required
-              ref={email}
-            />
+            {isLoading === true ? (
+              <Loading />
+            ) : (
+              <input
+                className="form-control mb-2"
+                type="email"
+                placeholder="Your email goes here..."
+                required
+                ref={email}
+              />
+            )}
           </div>
 
           <button

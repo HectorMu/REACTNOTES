@@ -397,3 +397,7 @@ input:focus {
   fill: #aabdc4;
 }
 /* /Login shape */
+.my-sticky {
+  position: sticky;
+  top: 0;
+}

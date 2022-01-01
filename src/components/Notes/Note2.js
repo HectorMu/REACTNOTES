@@ -10,7 +10,7 @@ const styles = {
     width: "93%",
   },
 };
-const Note = ({ Note, renderNotes }) => {
+const Note2 = ({ Note, renderNotes }) => {
   const [onTruncateContent, setOnTruncateContent] = useState(true);
   const [onTruncateTitle, setOnTruncateTitle] = useState(true);
   const [onRelativeTime, setOnRelativeTime] = useState(true);
@@ -64,6 +64,56 @@ const Note = ({ Note, renderNotes }) => {
           ></div>
           <div className="col-11 col-md-11 col-lg-11 col-sm-11">
             <div className="card-body">
+              <div className="d-flex justify-content-between">
+                <p
+                  className="text-muted text-uppercase small border-bottom c-pointer"
+                  onClick={toggleRelativeTime}
+                >
+                  {onRelativeTime === true ? (
+                    <Moment
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="left"
+                      title={Note.createdat.split(" ")[0]}
+                      fromNow
+                    >
+                      {Note.createdat.replace("/", "-")}
+                    </Moment>
+                  ) : (
+                    Note.createdat
+                  )}
+                </p>
+                <div className="dropdown dropdown-menu-end ">
+                  <button
+                    type="button"
+                    className="btn "
+                    data-bs-toggle="dropdown"
+                    id={`noteOptionsDropdown${Note.idnote}`}
+                  >
+                    <i className="fas fa-ellipsis-h text-muted text-capitalize"></i>
+                  </button>
+                  <ul
+                    className="dropdown-menu py-2 px-2 shadow"
+                    aria-labelledby={`noteOptionsDropdown${Note.idnote}`}
+                  >
+                    <li className="mb-1">
+                      <Link
+                        to={`/notes/edit/${Note.idnote}`}
+                        className="btn btn-primary btn-sm w-100"
+                      >
+                        <i className="fas fa-pen"></i> Edit
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => deleteClick(Note.idnote)}
+                        className="btn btn-danger btn-sm w-100"
+                      >
+                        <i className="fas fa-trash"></i> Delete
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <h5
                 className={`card-text  ${
                   Note.title.length >= 22 ? "c-pointer" : ""
@@ -80,37 +130,6 @@ const Note = ({ Note, renderNotes }) => {
               >
                 {Note.content}
               </p>
-              <p
-                className="text-muted text-uppercase small border-bottom c-pointer"
-                onClick={toggleRelativeTime}
-              >
-                {onRelativeTime === true ? (
-                  <Moment
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="left"
-                    title={Note.createdat.split(" ")[0]}
-                    fromNow
-                  >
-                    {Note.createdat.replace("/", "-")}
-                  </Moment>
-                ) : (
-                  Note.createdat
-                )}
-              </p>
-              <div className="d-flex gap-1 justify-content-center">
-                <Link
-                  to={`/notes/edit/${Note.idnote}`}
-                  className="btn btn-primary btn-sm w-100"
-                >
-                  <i className="fas fa-pen"></i>
-                </Link>
-                <button
-                  onClick={() => deleteClick(Note.idnote)}
-                  className="btn btn-danger btn-sm w-100"
-                >
-                  <i className="fas fa-trash"></i>
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -119,4 +138,4 @@ const Note = ({ Note, renderNotes }) => {
   );
 };
 
-export default Note;
+export default Note2;

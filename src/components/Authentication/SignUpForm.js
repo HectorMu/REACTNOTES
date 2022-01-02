@@ -7,7 +7,7 @@ function SignUpForm() {
   let navigate = useNavigate();
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(" ");
   const [pass, setPass] = useState("");
   const [confirm, setConfirm] = useState("");
 
@@ -34,74 +34,87 @@ function SignUpForm() {
           <p>Sign up and start managing your notes.</p>
         </div>
         <div className="card-body">
-          <div className="row">
+          <div className="row mb-2">
             <div className="col">
-              <div className="input-group  mb-2 ">
+              <div class="formgroup__animated mb-2">
                 <input
-                  id="first"
                   type="text"
-                  placeholder="First Name"
-                  className="form-control"
+                  id="firstname"
+                  class="input__animated"
+                  placeholder=" "
                   onChange={(e) => setFirstname(e.target.value)}
                   value={firstname}
                   required
                 />
+                <label for="firstname" class="animated__label">
+                  First Name
+                </label>
               </div>
             </div>
             <div className="col">
-              <div className="input-group  mb-2">
+              <div class="formgroup__animated mb-2">
                 <input
-                  id="last"
                   type="text"
-                  placeholder="Last Name"
-                  className="form-control"
+                  id="lastname"
+                  class="input__animated"
+                  placeholder=" "
                   onChange={(e) => setLastname(e.target.value)}
                   value={lastname}
                   required
                 />
+                <label for="lastname" class="animated__label">
+                  Last Name
+                </label>
               </div>
             </div>
           </div>
 
-          <div className="input-group  mb-2">
+          <div class="formgroup__animated mb-2">
             <input
-              id="email"
               type="email"
-              placeholder="Email"
-              className="form-control"
+              id="email"
+              class="input__animated"
+              placeholder=" "
               onChange={(e) => setEmail(e.target.value)}
               value={email}
+              autoComplete="off"
               required
             />
+            <label for="email" class="animated__label">
+              Email
+            </label>
           </div>
-          <small>
-            <p id="emailMessage" />
-          </small>
-          <div className="input-group  mb-2">
+          <div class="formgroup__animated mb-2">
             <input
-              id="pass"
               type="password"
-              placeholder="Password"
-              className="form-control"
+              id="password"
+              class="input__animated"
+              placeholder=" "
               onChange={(e) => setPass(e.target.value)}
               value={pass}
+              autoComplete="off"
               required
             />
+            <label for="password" class="animated__label">
+              Password
+            </label>
           </div>
-          <small>
-            <p id="res" />
-          </small>
-          <div className="input-group  mb-3 mt-2">
+          <div class="formgroup__animated mb-2">
             <input
-              id="confirm"
               type="password"
-              placeholder="Confirm Password"
-              className="form-control"
+              id="conpassword"
+              class="input__animated"
+              placeholder=" "
               onChange={(e) => setConfirm(e.target.value)}
               value={confirm}
+              autoComplete="off"
               required
             />
+            <label for="conpassword" class="animated__label">
+              Confirm Password
+            </label>
           </div>
+
           <button
             type="submit"
             className="btn  btn-primary fs-5 mt-3 w-100 rounded-pill"

@@ -23,14 +23,21 @@ const ContactForm = () => {
       <div className="card-body  py-5">
         <h2 className="display-4 fw-bolder text-center">Your data</h2>
         <form onSubmit={handleContactSubmit}>
-          <div className="form-group"></div>
-          <input
-            type="text"
-            className="form-control mb-2"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            placeholder="Email"
-          />
+          <div class="formgroup__animated mb-2">
+            <input
+              type="email"
+              id="Email"
+              class="input__animated"
+              placeholder=" "
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              required
+            />
+            <label for="Email" class="animated__label">
+              Email
+            </label>
+          </div>
+
           <textarea
             className="form-control"
             cols={30}

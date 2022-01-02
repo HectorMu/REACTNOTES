@@ -37,25 +37,33 @@ function LoginForm() {
           <p>Log in to access to your notes.</p>
         </div>
         <div className="card-body">
-          <div className="input-group mb-3">
+          <div class="formgroup__animated mb-3">
             <input
-              className="form-control"
               type="email"
-              placeholder="Email"
+              id="email"
+              class="input__animated"
+              placeholder=" "
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               required
             />
+            <label for="email" class="animated__label">
+              Email
+            </label>
           </div>
-          <div className="input-group mb-2">
+          <div class="formgroup__animated mb-3">
             <input
-              className="form-control"
               type="password"
-              placeholder="Password"
+              id="password"
+              class="input__animated"
+              placeholder=" "
               onChange={(e) => setPass(e.target.value)}
               value={pass}
               required
             />
+            <label for="password" class="animated__label">
+              Password
+            </label>
           </div>
 
           <small>

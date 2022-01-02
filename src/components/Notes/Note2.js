@@ -11,15 +11,18 @@ const styles = {
   },
 };
 const Note2 = ({ Note, renderNotes }) => {
-  const [onTruncateContent, setOnTruncateContent] = useState(true);
-  const [onTruncateTitle, setOnTruncateTitle] = useState(true);
+  // const [onTruncateContent, setOnTruncateContent] = useState(true);
+  // const [onTruncateTitle, setOnTruncateTitle] = useState(true);
+  const [onTruncate, setOnTruncate] = useState(true);
   const [onRelativeTime, setOnRelativeTime] = useState(true);
   const [onHover, setOnHover] = useState(false);
 
   //i know i can set each state directly the onclick property, but this way is more verbose
-  const toggleTruncateContent = () => setOnTruncateContent(!onTruncateContent);
+  // const toggleTruncateContent = () => setOnTruncateContent(!onTruncateContent);
 
-  const toggleTruncateTitle = () => setOnTruncateTitle(!onTruncateTitle);
+  // const toggleTruncateTitle = () => setOnTruncateTitle(!onTruncateTitle);
+
+  const toggleTruncate = () => setOnTruncate(!onTruncate);
 
   const toggleShadowOnHover = () => setOnHover(!onHover);
 
@@ -65,31 +68,14 @@ const Note2 = ({ Note, renderNotes }) => {
           <div className="col-11 col-md-11 col-lg-11 col-sm-11">
             <div className="card-body">
               <div className="d-flex justify-content-between">
-                <p
-                  className="text-muted text-uppercase small border-bottom c-pointer"
-                  onClick={toggleRelativeTime}
-                >
-                  {onRelativeTime === true ? (
-                    <Moment
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="left"
-                      title={Note.createdat.split(" ")[0]}
-                      fromNow
-                    >
-                      {Note.createdat.replace("/", "-")}
-                    </Moment>
-                  ) : (
-                    Note.createdat
-                  )}
-                </p>
-                <div className="dropdown dropdown-menu-end ">
+                <div className="dropdown dropdown-menu-start ">
                   <button
                     type="button"
-                    className="btn "
+                    className="btn px-0 py-0"
                     data-bs-toggle="dropdown"
                     id={`noteOptionsDropdown${Note.idnote}`}
                   >
-                    <i className="fas fa-ellipsis-h text-muted text-capitalize"></i>
+                    <i className="fas fa-ellipsis-v text-muted text-capitalize"></i>
                   </button>
                   <ul
                     className="dropdown-menu py-2 px-2 shadow"
@@ -113,23 +99,39 @@ const Note2 = ({ Note, renderNotes }) => {
                     </li>
                   </ul>
                 </div>
+                <p
+                  className="text-muted text-uppercase small border-bottom c-pointer"
+                  onClick={toggleRelativeTime}
+                >
+                  {onRelativeTime === true ? (
+                    <Moment
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="left"
+                      title={Note.createdat.split(" ")[0]}
+                      fromNow
+                    >
+                      {Note.createdat.replace("/", "-")}
+                    </Moment>
+                  ) : (
+                    Note.createdat
+                  )}
+                </p>
               </div>
-              <h5
-                className={`card-text  ${
-                  Note.title.length >= 22 ? "c-pointer" : ""
-                } ${onTruncateTitle === true ? "text-truncate " : ""} `}
-                onClick={toggleTruncateTitle}
-              >
-                {Note.title}
-              </h5>
-              <p
+              <div
+                onClick={toggleTruncate}
                 className={`card-text ${
-                  Note.content.length >= 22 ? "c-pointer" : ""
-                } ${onTruncateContent === true ? "text-truncate" : ""} `}
-                onClick={toggleTruncateContent}
+                  Note.content.length >= 22 || Note.title.length >= 22
+                    ? "c-pointer"
+                    : ""
+                } `}
               >
-                {Note.content}
-              </p>
+                <h5 className={`${onTruncate === true ? "text-truncate" : ""}`}>
+                  {Note.title}
+                </h5>
+                <p className={`${onTruncate === true ? "text-truncate" : ""}`}>
+                  {Note.content}
+                </p>
+              </div>
             </div>
           </div>
         </div>

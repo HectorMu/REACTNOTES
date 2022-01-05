@@ -36,81 +36,81 @@ function SignUpForm() {
         <div className="card-body">
           <div className="row mb-2">
             <div className="col">
-              <div class="formgroup__animated mb-2">
+              <div className="formgroup__animated mb-2">
                 <input
                   type="text"
                   id="firstname"
-                  class="input__animated"
+                  className="input__animated"
                   placeholder=" "
                   onChange={(e) => setFirstname(e.target.value)}
                   value={firstname}
                   required
                 />
-                <label for="firstname" class="animated__label">
+                <label htmlFor="firstname" className="animated__label">
                   First Name
                 </label>
               </div>
             </div>
             <div className="col">
-              <div class="formgroup__animated mb-2">
+              <div className="formgroup__animated mb-2">
                 <input
                   type="text"
                   id="lastname"
-                  class="input__animated"
+                  className="input__animated"
                   placeholder=" "
                   onChange={(e) => setLastname(e.target.value)}
                   value={lastname}
                   required
                 />
-                <label for="lastname" class="animated__label">
+                <label htmlFor="lastname" className="animated__label">
                   Last Name
                 </label>
               </div>
             </div>
           </div>
 
-          <div class="formgroup__animated mb-2">
+          <div className="formgroup__animated mb-2">
             <input
               type="email"
               id="email"
-              class="input__animated"
+              className="input__animated"
               placeholder=" "
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               autoComplete="off"
               required
             />
-            <label for="email" class="animated__label">
+            <label htmlFor="email" className="animated__label">
               Email
             </label>
           </div>
-          <div class="formgroup__animated mb-2">
+          <div className="formgroup__animated mb-2">
             <input
               type="password"
               id="password"
-              class="input__animated"
+              className="input__animated"
               placeholder=" "
               onChange={(e) => setPass(e.target.value)}
               value={pass}
               autoComplete="off"
               required
             />
-            <label for="password" class="animated__label">
+            <label htmlFor="password" className="animated__label">
               Password
             </label>
           </div>
-          <div class="formgroup__animated mb-2">
+          <div className="formgroup__animated mb-2">
             <input
               type="password"
               id="conpassword"
-              class="input__animated"
+              className="input__animated"
               placeholder=" "
               onChange={(e) => setConfirm(e.target.value)}
               value={confirm}
               autoComplete="off"
               required
             />
-            <label for="conpassword" class="animated__label">
+            <label htmlFor="conpassword" className="animated__label">
               Confirm Password
             </label>
           </div>

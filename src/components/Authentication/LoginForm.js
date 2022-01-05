@@ -37,31 +37,31 @@ function LoginForm() {
           <p>Log in to access to your notes.</p>
         </div>
         <div className="card-body">
-          <div class="formgroup__animated mb-3">
+          <div className="formgroup__animated mb-3">
             <input
               type="email"
               id="email"
-              class="input__animated"
+              className="input__animated"
               placeholder=" "
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               required
             />
-            <label for="email" class="animated__label">
+            <label htmlFor="email" className="animated__label">
               Email
             </label>
           </div>
-          <div class="formgroup__animated mb-3">
+          <div className="formgroup__animated mb-3">
             <input
               type="password"
               id="password"
-              class="input__animated"
+              className="input__animated"
               placeholder=" "
               onChange={(e) => setPass(e.target.value)}
               value={pass}
               required
             />
-            <label for="password" class="animated__label">
+            <label htmlFor="password" className="animated__label">
               Password
             </label>
           </div>
